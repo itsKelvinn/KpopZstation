@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Album">
+    <Key>
+      <PropertyRef Name="AlbumID" />
+    </Key>
+    <Property Name="AlbumID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ArtistID" Type="Int32" />
+    <Property Name="AlbumName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AlbumImage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AlbumPrice" Type="Int32" Nullable="false" />
+    <Property Name="AlbumStock" Type="Int32" Nullable="false" />
+    <Property Name="AlbumDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Artist" Relationship="Self.FK__Album__ArtistID__3D5E1FD2" FromRole="Album" ToRole="Artist" />
+    <NavigationProperty Name="Carts" Relationship="Self.FK__Cart__AlbumID__4316F928" FromRole="Album" ToRole="Cart" />
+    <NavigationProperty Name="TransactioDetails" Relationship="Self.FK__Transacti__Album__403A8C7D" FromRole="Album" ToRole="TransactioDetail" />
+  </EntityType>
+  <EntityType Name="Artist">
+    <Key>
+      <PropertyRef Name="ArtistID" />
+    </Key>
+    <Property Name="ArtistID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ArtistName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ArtistImage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Albums" Relationship="Self.FK__Album__ArtistID__3D5E1FD2" FromRole="Artist" ToRole="Album" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CustomerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CustomerPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CustomerGender" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CustomerAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CustomerRole" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Carts" Relationship="Self.FK__Cart__CustomerID__4222D4EF" FromRole="Customer" ToRole="Cart" />
+    <NavigationProperty Name="TransactionHeaders" Relationship="Self.FK__Transacti__Custo__38996AB5" FromRole="Customer" ToRole="TransactionHeader" />
+  </EntityType>
+  <EntityType Name="TransactionHeader">
+    <Key>
+      <PropertyRef Name="TransactionID" />
+    </Key>
+    <Property Name="TransactionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CustomerID" Type="Int32" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__Transacti__Custo__38996AB5" FromRole="TransactionHeader" ToRole="Customer" />
+    <NavigationProperty Name="TransactioDetails" Relationship="Self.FK__Transacti__Trans__3F466844" FromRole="TransactionHeader" ToRole="TransactioDetail" />
+  </EntityType>
+  <EntityType Name="Cart">
+    <Key>
+      <PropertyRef Name="Qty" />
+    </Key>
+    <Property Name="CustomerID" Type="Int32" />
+    <Property Name="AlbumID" Type="Int32" />
+    <Property Name="Qty" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Album" Relationship="Self.FK__Cart__AlbumID__4316F928" FromRole="Cart" ToRole="Album" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__Cart__CustomerID__4222D4EF" FromRole="Cart" ToRole="Customer" />
+  </EntityType>
+  <EntityType Name="TransactioDetail">
+    <Key>
+      <PropertyRef Name="Qty" />
+    </Key>
+    <Property Name="TransactionID" Type="Int32" />
+    <Property Name="AlbumID" Type="Int32" />
+    <Property Name="Qty" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Album" Relationship="Self.FK__Transacti__Album__403A8C7D" FromRole="TransactioDetail" ToRole="Album" />
+    <NavigationProperty Name="TransactionHeader" Relationship="Self.FK__Transacti__Trans__3F466844" FromRole="TransactioDetail" ToRole="TransactionHeader" />
+  </EntityType>
+  <Association Name="FK__Album__ArtistID__3D5E1FD2">
+    <End Role="Artist" Type="Self.Artist" Multiplicity="0..1" />
+    <End Role="Album" Type="Self.Album" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Artist">
+        <PropertyRef Name="ArtistID" />
+      </Principal>
+      <Dependent Role="Album">
+        <PropertyRef Name="ArtistID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cart__AlbumID__4316F928">
+    <End Role="Album" Type="Self.Album" Multiplicity="0..1" />
+    <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Album">
+        <PropertyRef Name="AlbumID" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="AlbumID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__Album__403A8C7D">
+    <End Role="Album" Type="Self.Album" Multiplicity="0..1" />
+    <End Role="TransactioDetail" Type="Self.TransactioDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Album">
+        <PropertyRef Name="AlbumID" />
+      </Principal>
+      <Dependent Role="TransactioDetail">
+        <PropertyRef Name="AlbumID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cart__CustomerID__4222D4EF">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__Custo__38996AB5">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="TransactionHeader" Type="Self.TransactionHeader" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="TransactionHeader">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__Trans__3F466844">
+    <End Role="TransactionHeader" Type="Self.TransactionHeader" Multiplicity="0..1" />
+    <End Role="TransactioDetail" Type="Self.TransactioDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TransactionHeader">
+        <PropertyRef Name="TransactionID" />
+      </Principal>
+      <Dependent Role="TransactioDetail">
+        <PropertyRef Name="TransactionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Albums" EntityType="Self.Album" />
+    <EntitySet Name="Artists" EntityType="Self.Artist" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="TransactionHeaders" EntityType="Self.TransactionHeader" />
+    <EntitySet Name="Carts" EntityType="Self.Cart" />
+    <EntitySet Name="TransactioDetails" EntityType="Self.TransactioDetail" />
+    <AssociationSet Name="FK__Album__ArtistID__3D5E1FD2" Association="Self.FK__Album__ArtistID__3D5E1FD2">
+      <End Role="Artist" EntitySet="Artists" />
+      <End Role="Album" EntitySet="Albums" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cart__AlbumID__4316F928" Association="Self.FK__Cart__AlbumID__4316F928">
+      <End Role="Album" EntitySet="Albums" />
+      <End Role="Cart" EntitySet="Carts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__Album__403A8C7D" Association="Self.FK__Transacti__Album__403A8C7D">
+      <End Role="Album" EntitySet="Albums" />
+      <End Role="TransactioDetail" EntitySet="TransactioDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cart__CustomerID__4222D4EF" Association="Self.FK__Cart__CustomerID__4222D4EF">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Cart" EntitySet="Carts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__Custo__38996AB5" Association="Self.FK__Transacti__Custo__38996AB5">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="TransactionHeader" EntitySet="TransactionHeaders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__Trans__3F466844" Association="Self.FK__Transacti__Trans__3F466844">
+      <End Role="TransactionHeader" EntitySet="TransactionHeaders" />
+      <End Role="TransactioDetail" EntitySet="TransactioDetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Album">
+    <Key>
+      <PropertyRef Name="AlbumID" />
+    </Key>
+    <Property Name="AlbumID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ArtistID" Type="int" />
+    <Property Name="AlbumName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AlbumImage" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AlbumPrice" Type="int" Nullable="false" />
+    <Property Name="AlbumStock" Type="int" Nullable="false" />
+    <Property Name="AlbumDescription" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Artist">
+    <Key>
+      <PropertyRef Name="ArtistID" />
+    </Key>
+    <Property Name="ArtistID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ArtistName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ArtistImage" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\KELVI\DOWNLOADS\DESKTOP\PATTERN SOFTWARE DESIGN\KPOPZSTATION\KPOPZSTATION\APP_DATA\DATABASE.MDF.dbo.Cart' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Cart">
+    <Key>
+      <PropertyRef Name="Qty" />
+    </Key>
+    <Property Name="CustomerID" Type="int" />
+    <Property Name="AlbumID" Type="int" />
+    <Property Name="Qty" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CustomerEmail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CustomerPassword" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CustomerGender" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="CustomerAddress" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CustomerRole" Type="varchar" MaxLength="5" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\KELVI\DOWNLOADS\DESKTOP\PATTERN SOFTWARE DESIGN\KPOPZSTATION\KPOPZSTATION\APP_DATA\DATABASE.MDF.dbo.TransactioDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TransactioDetail">
+    <Key>
+      <PropertyRef Name="Qty" />
+    </Key>
+    <Property Name="TransactionID" Type="int" />
+    <Property Name="AlbumID" Type="int" />
+    <Property Name="Qty" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TransactionHeader">
+    <Key>
+      <PropertyRef Name="TransactionID" />
+    </Key>
+    <Property Name="TransactionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TransactionDate" Type="date" Nullable="false" />
+    <Property Name="CustomerID" Type="int" />
+  </EntityType>
+  <Association Name="FK__Album__ArtistID__3D5E1FD2">
+    <End Role="Artist" Type="Self.Artist" Multiplicity="0..1" />
+    <End Role="Album" Type="Self.Album" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Artist">
+        <PropertyRef Name="ArtistID" />
+      </Principal>
+      <Dependent Role="Album">
+        <PropertyRef Name="ArtistID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cart__AlbumID__4316F928">
+    <End Role="Album" Type="Self.Album" Multiplicity="0..1" />
+    <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Album">
+        <PropertyRef Name="AlbumID" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="AlbumID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cart__CustomerID__4222D4EF">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__Album__403A8C7D">
+    <End Role="Album" Type="Self.Album" Multiplicity="0..1" />
+    <End Role="TransactioDetail" Type="Self.TransactioDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Album">
+        <PropertyRef Name="AlbumID" />
+      </Principal>
+      <Dependent Role="TransactioDetail">
+        <PropertyRef Name="AlbumID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__Custo__38996AB5">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="TransactionHeader" Type="Self.TransactionHeader" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="TransactionHeader">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__Trans__3F466844">
+    <End Role="TransactionHeader" Type="Self.TransactionHeader" Multiplicity="0..1" />
+    <End Role="TransactioDetail" Type="Self.TransactioDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TransactionHeader">
+        <PropertyRef Name="TransactionID" />
+      </Principal>
+      <Dependent Role="TransactioDetail">
+        <PropertyRef Name="TransactionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DatabaseModelStoreContainer">
+    <EntitySet Name="Album" EntityType="Self.Album" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Artist" EntityType="Self.Artist" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransactionHeader" EntityType="Self.TransactionHeader" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cart" EntityType="Self.Cart" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Cart].[CustomerID] AS [CustomerID], 
+    [Cart].[AlbumID] AS [AlbumID], 
+    [Cart].[Qty] AS [Qty]
+    FROM [dbo].[Cart] AS [Cart]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TransactioDetail" EntityType="Self.TransactioDetail" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TransactioDetail].[TransactionID] AS [TransactionID], 
+    [TransactioDetail].[AlbumID] AS [AlbumID], 
+    [TransactioDetail].[Qty] AS [Qty]
+    FROM [dbo].[TransactioDetail] AS [TransactioDetail]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Album__ArtistID__3D5E1FD2" Association="Self.FK__Album__ArtistID__3D5E1FD2">
+      <End Role="Artist" EntitySet="Artist" />
+      <End Role="Album" EntitySet="Album" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cart__AlbumID__4316F928" Association="Self.FK__Cart__AlbumID__4316F928">
+      <End Role="Album" EntitySet="Album" />
+      <End Role="Cart" EntitySet="Cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cart__CustomerID__4222D4EF" Association="Self.FK__Cart__CustomerID__4222D4EF">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Cart" EntitySet="Cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__Album__403A8C7D" Association="Self.FK__Transacti__Album__403A8C7D">
+      <End Role="Album" EntitySet="Album" />
+      <End Role="TransactioDetail" EntitySet="TransactioDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__Custo__38996AB5" Association="Self.FK__Transacti__Custo__38996AB5">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="TransactionHeader" EntitySet="TransactionHeader" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__Trans__3F466844" Association="Self.FK__Transacti__Trans__3F466844">
+      <End Role="TransactionHeader" EntitySet="TransactionHeader" />
+      <End Role="TransactioDetail" EntitySet="TransactioDetail" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
