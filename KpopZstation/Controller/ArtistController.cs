@@ -18,5 +18,15 @@ namespace KpopZstation.Controller
         {
             return AddArtistHandler.handle(ArtistName, ImagePath);
         }
+
+        public static Artist getArtist(int ArtistID)
+        {
+            return GetArtistByIDHandler.handle(ArtistID);
+        }
+
+        public static List<Album> getArtistAlbum(int ArtistID)
+        {
+            return GetAllArtistAlbumHandler.handle(ArtistID);  
+        }
     }
 }

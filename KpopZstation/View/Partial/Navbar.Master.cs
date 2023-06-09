@@ -15,8 +15,8 @@ namespace KpopZstation.View.Partial
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (customer == null)
-            {
+            if (customer == null) { 
+
                 Avatar.Visible = false;
                 HomeLink.Visible = true;
                 LoginLink.Visible = true;
@@ -29,7 +29,7 @@ namespace KpopZstation.View.Partial
                 TransactionLink.Visible = true;
                 Avatar.Visible = true;
             }
-            else if (customer.CustomerRole.Equals("admin"))
+            else if (customer.CustomerRole.Equals("Admin"))
             {
                 HomeLink.Visible = true;
                 TransactionLink.Visible = true;

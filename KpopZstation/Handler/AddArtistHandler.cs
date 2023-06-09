@@ -1,4 +1,6 @@
-﻿using KpopZstation.Repository;
+﻿using KpopZstation.Factory;
+using KpopZstation.Model;
+using KpopZstation.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,8 @@ namespace KpopZstation.Handler
     {
         public static bool handle(string ArtistName, string ImagePath)
         {
-            return ArtistRepository.insertArtis(ArtistName, ImagePath);
+            Artist artist = ArtistFactory.Artist(ArtistName, ImagePath);
+            return ArtistRepository.insertArtis(artist);
         }
     }
 }

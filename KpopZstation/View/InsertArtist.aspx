@@ -17,7 +17,6 @@
                 <asp:Label ID="lblStatus" runat="server" Text="Label"></asp:Label>
                 <asp:TextBox class="px-2" ID="nameTxtbox" runat="server" placeholder="ArtistName" type="text" ></asp:TextBox>
                 <asp:FileUpload ID="FileUpload" runat="server" />
-                
                 <asp:Button class="btn btn-dark fw-bold" ID="Button1" runat="server" Text="Create Artist" OnClick="insertArtistBtn" />
                 
             </div>    

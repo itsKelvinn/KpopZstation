@@ -1,4 +1,5 @@
 ﻿using KpopZstation.Factory;
+using KpopZstation.Model;
 using KpopZstation.Repository;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,8 @@ namespace KpopZstation.Handler
     {
         public static void handle(string CustomerName, string CustomerEmail, string CustomerPassword, string CustomerGender, string CustomerAddress, string CustomerRole)
         {
-            CustomerRepository.createCustomer(CustomerFactory.createCustomer(CustomerName, CustomerEmail, CustomerPassword, CustomerGender, CustomerAddress, CustomerRole));
+            Customer customer = CustomerFactory.createCustomer(CustomerName, CustomerEmail, CustomerPassword, CustomerGender, CustomerAddress, CustomerRole);
+            CustomerRepository.addCustomer(customer);
         }
     }
 }

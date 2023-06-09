@@ -96,6 +96,7 @@
     <Content Include="View\AlbumUpdate.aspx" />
     <Content Include="View\ArtistDetail.aspx" />
     <Content Include="View\CSS\AvatarNav.css" />
+    <Content Include="View\CSS\Cards.css" />
     <Content Include="View\CSS\Globla.css" />
     <Content Include="View\Home.aspx" />
     <Content Include="View\InsertArtist.aspx" />
@@ -110,13 +111,18 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\AlbumController.cs" />
     <Compile Include="Controller\ArtistController.cs" />
     <Compile Include="Controller\AuthController.cs" />
     <Compile Include="Controller\CustomerController.cs" />
     <Compile Include="Data\DatabaseConnector.cs" />
+    <Compile Include="Factory\AlbumFactory.cs" />
     <Compile Include="Factory\ArtistFactory.cs" />
     <Compile Include="Factory\CustomerFactory.cs" />
+    <Compile Include="Handler\AddAlbumArtistHandler.cs" />
     <Compile Include="Handler\AddCustomerHandler.cs" />
+    <Compile Include="Handler\GetAllArtistAlbumHandler.cs" />
+    <Compile Include="Handler\GetArtistByIDHandler.cs" />
     <Compile Include="Handler\GetCustomerHandler.cs" />
     <Compile Include="Handler\GetAllArtistHandler.cs" />
     <Compile Include="Handler\AddArtistHandler.cs" />
@@ -154,8 +160,10 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\AlbumRepository.cs" />
     <Compile Include="Repository\ArtistRepository.cs" />
     <Compile Include="Repository\CustomerRepository.cs" />
+    <Compile Include="Validator\AlbumValidator.cs" />
     <Compile Include="View\AlbumDetail.aspx.cs">
       <DependentUpon>AlbumDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

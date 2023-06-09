@@ -16,7 +16,7 @@ namespace KpopZstation.Repository
             return (from data in DB.Customers select data).ToList();
         }
 
-        public static void createCustomer(Customer customer)
+        public static void addCustomer(Customer customer)
         {
             DB.Customers.Add(customer);
             DB.SaveChanges();

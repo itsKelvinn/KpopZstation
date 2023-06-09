@@ -1,5 +1,6 @@
 ﻿using KpopZstation.Data;
 using KpopZstation.Factory;
+using KpopZstation.Handler;
 using KpopZstation.Model;
 using System;
 using System.Collections.Generic;
@@ -12,9 +13,8 @@ namespace KpopZstation.Repository
     {
         public static DatabaseEntities DB = DatabaseConnector.Connect();
 
-        public static bool insertArtis(string ArtisName, string ArtistImgPath)
+        public static bool insertArtis(Artist artist)
         {
-            Artist artist = ArtistFactory.Artist(ArtisName, ArtistImgPath);
             DB.Artists.Add(artist);
             DB.SaveChanges();
             return true;
@@ -24,5 +24,16 @@ namespace KpopZstation.Repository
         {
             return DB.Artists.ToList();
         }
+
+        public static Artist getArtist(int ArtistID)
+        {
+            return DB.Artists.Find(ArtistID);
+        }
+
+        public static List<Album> getAllArtistAlbum(int ArtistID)
+        {
+            return DB.Artists.Find(ArtistID).Albums.ToList();
+        }
+
     }
 }

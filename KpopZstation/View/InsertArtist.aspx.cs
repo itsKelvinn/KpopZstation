@@ -12,11 +12,11 @@ namespace KpopZstation.View
 {
     public partial class InsertArtist : System.Web.UI.Page
     {
-        public string artistName;
-        public string imagePath;
+        string artistName;
+        string imagePath;
 
-        static readonly string[] allowedExtensions = { ".jpg", ".jpeg", ".png", ".jfif" };
-        static readonly int maxFileSize = 2 * 1024 * 1024;
+        readonly string[] allowedExtensions = { ".jpg", ".jpeg", ".png", ".jfif" };
+        readonly int maxFileSize = 2 * 1024 * 1024;
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -27,32 +27,34 @@ namespace KpopZstation.View
             {
                 Response.Redirect("Home.aspx");
             }
-
         }
 
         protected void insertArtistBtn(object sender, EventArgs e)
         {
-            this.artistName = nameTxtbox.ToString();
-            this.imagePath = "/Asset/Artist_Profile_Pic/" + FileUpload.FileName.ToString();
+            artistName = nameTxtbox.Text.ToString();
+            imagePath = "/Asset/Artist_Pics/" + FileUpload.FileName.ToString();
 
             if (fileUploadValidate())
             {
                 ArtistController.addArtist(artistName, imagePath);
+                Response.Redirect("Home.aspx");
             }
             else
             {
-                lblStatus.Text = "Please select a file to upload.";
+                lblStatus.Text = "Gagal";
             }
 
         }
 
         protected bool fileUploadValidate()
         {
-            if (FileUpload.HasFile && allowedExtensions.Contains(imagePath.ToLower()) && FileUpload.PostedFile.ContentLength <= maxFileSize)
+            bool isExtensionAllowed = allowedExtensions.Any(ext => imagePath.EndsWith(ext, StringComparison.OrdinalIgnoreCase));
+
+            if (FileUpload.HasFile && isExtensionAllowed && FileUpload.PostedFile.ContentLength <= maxFileSize)
             {
                 try
                 {
-                    string folderPath = Server.MapPath("/Asset/Artist_Profile_Pic/");
+                    string folderPath = Server.MapPath("/Asset/Artist_Pics/");
 
                     if (!Directory.Exists(folderPath))
                     {
@@ -61,7 +63,6 @@ namespace KpopZstation.View
 
                     string fileName = Path.GetFileName(FileUpload.FileName);
                     FileUpload.SaveAs(Path.Combine(folderPath, fileName));
-
 
                 }
                 catch (Exception ex)

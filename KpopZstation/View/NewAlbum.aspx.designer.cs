@@ -24,31 +24,58 @@ namespace KpopZstation.View
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// nameTxtbox control.
+        /// AlbumNameTxtbox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox nameTxtbox;
+        protected global::System.Web.UI.WebControls.TextBox AlbumNameTxtbox;
 
         /// <summary>
-        /// priceTxtbox control.
+        /// errorAlbumNameLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox priceTxtbox;
+        protected global::System.Web.UI.WebControls.Label errorAlbumNameLabel;
 
         /// <summary>
-        /// stoctTxtbox control.
+        /// AlbumPriceTxtbox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox stoctTxtbox;
+        protected global::System.Web.UI.WebControls.TextBox AlbumPriceTxtbox;
+
+        /// <summary>
+        /// errorAlbumPriceLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorAlbumPriceLabel;
+
+        /// <summary>
+        /// AlbumStockTxtbox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox AlbumStockTxtbox;
+
+        /// <summary>
+        /// errorAlbumStockLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorAlbumStockLabel;
 
         /// <summary>
         /// Label1 control.
@@ -60,6 +87,33 @@ namespace KpopZstation.View
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
+        /// albumDescTextArea control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea albumDescTextArea;
+
+        /// <summary>
+        /// errorAlbumDescLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorAlbumDescLabel;
+
+        /// <summary>
+        /// uploadFileBorder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl uploadFileBorder;
+
+        /// <summary>
         /// FileUpload control.
         /// </summary>
         /// <remarks>
@@ -69,12 +123,21 @@ namespace KpopZstation.View
         protected global::System.Web.UI.WebControls.FileUpload FileUpload;
 
         /// <summary>
-        /// Button1 control.
+        /// errorAlbumFileLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Label errorAlbumFileLabel;
+
+        /// <summary>
+        /// AddAlbumBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button AddAlbumBtn;
     }
 }
