@@ -23,6 +23,7 @@
                 <asp:PlaceHolder runat="server" ID="HomeLink" Visible="false">
                     <a href="/View/Home.aspx" class="fw-normal text-decoration-none text-dark">Home</a>
                 </asp:PlaceHolder>
+                
 
                 <asp:PlaceHolder runat="server" ID="TransactionLink" Visible="false">
                     <a href="#" class="fw-normal text-decoration-none text-dark">Transaction</a>
@@ -37,7 +38,7 @@
                 </asp:PlaceHolder>
 
                 <asp:PlaceHolder runat="server" ID="RegisterLink" Visible="false">
-                    <a href="/View/Signup.aspx" class="fw-normal text-decoration-none text-dark">Register</a>
+                    <a href="/View/Register.aspx" class="fw-normal text-decoration-none text-dark">Register</a>
                 </asp:PlaceHolder>
 
             </div>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Partial/Navbar.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="KpopZstation.View.Home" %>
+﻿<%@ Page Title="Home | KpopZstation" Language="C#" MasterPageFile="~/View/Partial/Navbar.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="KpopZstation.View.Home" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -27,22 +27,36 @@
 
             <asp:PlaceHolder runat="server" ID="ArtistCollect" Visible="false">
 
-                <div class="w-100 d-flex align-items-center flex-wrap gap-3 border border-black p-3" style="min-height: 450px;">
+                <div class="w-100 d-flex align-items-center flex-wrap border border-black p-3" style="min-height: 450px;">
                 
                     <%--Artist Cards--%>
 
-                    <%foreach (var artist in Artists) {  %>
-
-                        <div class="card">
-                            <img src="<%=artist.ArtistImage%>" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title"><%= artist.ArtistName %></h5>
-                                <% string slug = "ArtistDetail.aspx" + "/?id=" + artist.ArtistID; %>
-                                <a href="<%=slug%>" class="btn btn-dark">View Artist</a>
+                    <asp:Repeater ID="ArtistsRepeater" runat="server">
+                        <ItemTemplate>
+                            <div class="card m-2">
+                                <img src="<%# Eval("ArtistImage") %>" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title fw-bold"><%# Eval("ArtistName") %></h5>
+                                    <div class="w-100 d-flex gap-2">
+                                        <a href="<%# "ArtistDetail.aspx/?id=" + Eval("ArtistID") %>" class="btn btn-dark" >View Artist</a>
+                                        <asp:HyperLink href='<%# "UpdateArtist.aspx/?id=" + Eval("ArtistID") %>' class="btn btn-warning" Visible="false" ID="updatebtn" runat="server" >Update</asp:HyperLink>
+                                        <asp:Button 
+                                            class="btn btn-danger" 
+                                            ID="deletebtn" 
+                                            runat="server" 
+                                            CommandName="delete" 
+                                            OnCommand="DeleteArtistBtn_Click" 
+                                            CommandArgument='<%# Eval("ArtistID") %>'  
+                                            Text="Delete" 
+                                            UseSubmitBehavior="false" 
+                                            Visible="false"
+                                        />
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
 
-                    <%}%>
 
                 </div>
             </asp:PlaceHolder>

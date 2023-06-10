@@ -24,15 +24,6 @@ namespace KpopZstation.View
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// lblStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblStatus;
-
-        /// <summary>
         /// nameTxtbox control.
         /// </summary>
         /// <remarks>
@@ -42,6 +33,24 @@ namespace KpopZstation.View
         protected global::System.Web.UI.WebControls.TextBox nameTxtbox;
 
         /// <summary>
+        /// errorNamelbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorNamelbl;
+
+        /// <summary>
+        /// FileUploadBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl FileUploadBox;
+
+        /// <summary>
         /// FileUpload control.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,15 @@ namespace KpopZstation.View
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload;
+
+        /// <summary>
+        /// errorFileUploadlbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorFileUploadlbl;
 
         /// <summary>
         /// Button1 control.

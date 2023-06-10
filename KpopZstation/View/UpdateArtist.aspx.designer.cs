@@ -33,6 +33,24 @@ namespace KpopZstation.View
         protected global::System.Web.UI.WebControls.TextBox nameTxtbox;
 
         /// <summary>
+        /// errorArtistNamelbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorArtistNamelbl;
+
+        /// <summary>
+        /// FileUploadBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl FileUploadBox;
+
+        /// <summary>
         /// FileUpload control.
         /// </summary>
         /// <remarks>
@@ -40,6 +58,15 @@ namespace KpopZstation.View
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload;
+
+        /// <summary>
+        /// errorArtistFilelbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorArtistFilelbl;
 
         /// <summary>
         /// Button1 control.

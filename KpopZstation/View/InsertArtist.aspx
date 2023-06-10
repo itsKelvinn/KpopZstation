@@ -14,9 +14,15 @@
         <div class="w-100 d-flex justify-content-center align-items-center " style="height: 100vh;">
             <div class="border border-black p-5 d-flex flex-column gap-3">
                 <p class="fs-1 fw-bold m-0">Insert Artist</p>
-                <asp:Label ID="lblStatus" runat="server" Text="Label"></asp:Label>
-                <asp:TextBox class="px-2" ID="nameTxtbox" runat="server" placeholder="ArtistName" type="text" ></asp:TextBox>
-                <asp:FileUpload ID="FileUpload" runat="server" />
+                
+                <asp:TextBox class="px-2" style="height:50px;" ID="nameTxtbox" runat="server" placeholder="ArtistName" type="text" ></asp:TextBox>
+                <asp:Label class="text-danger" ID="errorNamelbl" runat="server" Visible="false" Text="Label"></asp:Label>
+
+                <div class="p-2" id="FileUploadBox" runat="server">
+                    <asp:FileUpload ID="FileUpload" runat="server" />
+                </div>
+                <asp:Label class="text-danger" ID="errorFileUploadlbl" runat="server" Visible="false" Text="Label"></asp:Label>
+                
                 <asp:Button class="btn btn-dark fw-bold" ID="Button1" runat="server" Text="Create Artist" OnClick="insertArtistBtn" />
                 
             </div>    

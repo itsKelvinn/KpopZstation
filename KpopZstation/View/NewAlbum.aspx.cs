@@ -1,4 +1,5 @@
 ﻿using KpopZstation.Controller;
+using KpopZstation.Model;
 using KpopZstation.Validator;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,13 @@ namespace KpopZstation.View
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Entar di isi 
+            Customer customer = AuthController.checkSession();
+
+            if (customer == null  || customer.CustomerRole.Equals("User"))
+            {
+                Response.Redirect("Home.aspx");
+            }
+
         }
 
         protected void addAlbumBtn(object sender, EventArgs e)
@@ -23,22 +30,10 @@ namespace KpopZstation.View
             string AlbumName = AlbumNameTxtbox.Text.ToString();
             int ArtistID = int.Parse(Request.QueryString["id"]);
             int AlbumPrice;
-            
-            try
-            {
-                AlbumPrice = int.Parse(AlbumPriceTxtbox.Text);
-            }
-            catch
-            {
-                AlbumPrice = 0;
-            }
-
-            int AlbumStock ;
-            try
-            {
-                AlbumStock = int.Parse(AlbumStockTxtbox.Text);
-            }
-            catch { AlbumStock = 0; }
+            int.TryParse(AlbumPriceTxtbox.Text, out AlbumPrice);
+            int AlbumStock ; 
+            int.TryParse(AlbumStockTxtbox.Text, out AlbumStock); 
+          
 
             string AlbumPicFileName = "/Asset/Album_Pics/" + FileUpload.FileName.ToString();
             string AlbumDesc = albumDescTextArea.Value.ToString();  
@@ -54,6 +49,12 @@ namespace KpopZstation.View
                 AlbumNameTxtbox.Style["background"] = "#ffebee";
                 validateCountCheck++;
             }
+            else
+            {
+                errorAlbumNameLabel.Visible = false;
+                AlbumNameTxtbox.Style["border"] = "1px solid black";
+                AlbumNameTxtbox.Style["background"] = "white";
+            }
             
             if (AlbumValidator.albumPriceValidate(AlbumPrice))
             {
@@ -62,6 +63,12 @@ namespace KpopZstation.View
                 AlbumPriceTxtbox.Style["border"] = "1px solid #DC4C64";
                 AlbumPriceTxtbox.Style["background"] = "#ffebee";
                 validateCountCheck++;
+            }
+            else
+            {
+                errorAlbumPriceLabel.Visible = false;
+                AlbumPriceTxtbox.Style["border"] = "1px solid black";
+                AlbumPriceTxtbox.Style["background"] = "white";
             }
 
             if (AlbumValidator.albumStockValidate(AlbumStock))
@@ -72,6 +79,12 @@ namespace KpopZstation.View
                 AlbumStockTxtbox.Style["background"] = "#ffebee";
                 validateCountCheck++;
             }
+            else
+            {
+                errorAlbumStockLabel.Visible = false;
+                AlbumStockTxtbox.Style["border"] = "1px solid black";
+                AlbumStockTxtbox.Style["background"] = "white";
+            }
 
             if (AlbumValidator.albumDescValidate(AlbumDesc))
             {
@@ -81,14 +94,26 @@ namespace KpopZstation.View
                 albumDescTextArea.Style["background"] = "#ffebee";
                 validateCountCheck++;
             }
+            else
+            {
+                errorAlbumDescLabel.Visible = false;
+                albumDescTextArea.Style["border"] = "1px solid white";
+                albumDescTextArea.Style["background"] = "black";
+            }
 
             if (AlbumValidator.albumImageValidate(AlbumPicFileName, AlbumPicSize))
             {
                 errorAlbumFileLabel.Visible = true;
                 errorAlbumFileLabel.Text = "Must be chosen, file extension must be .png, .jpg, .jpeg, or .jfif, and file size must be lower than 2MB";
-                uploadFileBorder.Style["border"] = "1px solid #DC4C64";
-                uploadFileBorder.Style["background"] = "#ffebee";
+                uploadFileBorder.Style["border"] = "1px solid black";
+                uploadFileBorder.Style["background"] = "white";
                 validateCountCheck++;
+            }
+            else
+            {
+                errorAlbumFileLabel.Visible = false;
+                uploadFileBorder.Style["border"] = "1px solid black";
+                uploadFileBorder.Style["background"] = "white";
             }
 
             if(validateCountCheck == 0)

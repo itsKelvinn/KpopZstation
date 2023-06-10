@@ -121,11 +121,14 @@
     <Compile Include="Factory\CustomerFactory.cs" />
     <Compile Include="Handler\AddAlbumArtistHandler.cs" />
     <Compile Include="Handler\AddCustomerHandler.cs" />
+    <Compile Include="Handler\CheckArtistHandler.cs" />
+    <Compile Include="Handler\RemoveArtistHandler.cs" />
     <Compile Include="Handler\GetAllArtistAlbumHandler.cs" />
     <Compile Include="Handler\GetArtistByIDHandler.cs" />
     <Compile Include="Handler\GetCustomerHandler.cs" />
     <Compile Include="Handler\GetAllArtistHandler.cs" />
     <Compile Include="Handler\AddArtistHandler.cs" />
+    <Compile Include="Handler\UpdateArtistHandler.cs" />
     <Compile Include="Model\Album.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -164,6 +167,8 @@
     <Compile Include="Repository\ArtistRepository.cs" />
     <Compile Include="Repository\CustomerRepository.cs" />
     <Compile Include="Validator\AlbumValidator.cs" />
+    <Compile Include="Validator\ArtistValidator.cs" />
+    <Compile Include="Validator\RegisterValidator.cs" />
     <Compile Include="View\AlbumDetail.aspx.cs">
       <DependentUpon>AlbumDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

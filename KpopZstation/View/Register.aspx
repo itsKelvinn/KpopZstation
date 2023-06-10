@@ -16,20 +16,29 @@
                 <p class="fs-1 fw-bold m-0">Register</p>
                 
                 <asp:TextBox class="px-2" style="height: 50px;" ID="nameTxtbox" runat="server" placeholder="Full Name" type="text" ></asp:TextBox>
-                <asp:TextBox class="px-2" style="height: 50px;" ID="emailTxtbox" runat="server" placeholder="Email" type="text" ></asp:TextBox>
-                <asp:RadioButtonList ID="genderRadioButtonList" RepeatDirection="Horizontal" class="d-flex" runat="server">
-                    <asp:ListItem Text="Male" Value="Male" class="d-flex gap-2"></asp:ListItem>
-                    <asp:ListItem Text="Female" Value="Female" class="d-flex gap-2 mx-5"></asp:ListItem>
-                </asp:RadioButtonList>
-                <asp:TextBox class="px-2" style="height: 50px;" ID="addressTxtbox" runat="server" placeholder="Address" type="text" ></asp:TextBox>
-                <asp:TextBox class="px-2" style="height: 50px;" ID="passwordTxtbox" runat="server" placeholder="Password" type="password" ></asp:TextBox>
+                <asp:Label Visible="false" class="text-danger" ID="errorNamelbl" runat="server" Text="Label"></asp:Label>
                 
+                <asp:TextBox class="px-2" style="height: 50px;" ID="emailTxtbox" runat="server" placeholder="Email" type="text" ></asp:TextBox>
+                <asp:Label Visible="false" class="text-danger" ID="errorEmaillbl" runat="server" Text="Label"></asp:Label>
+                
+                <div class="p-2" id="Genderbox" runat="server">
+                    <asp:RadioButtonList ID="genderRadioButtonList" RepeatDirection="Horizontal" class="d-flex" runat="server">
+                        <asp:ListItem Text="Male" Value="Male" class="d-flex gap-2"></asp:ListItem>
+                        <asp:ListItem Text="Female" Value="Female" class="d-flex gap-2 mx-5"></asp:ListItem>
+                    </asp:RadioButtonList>
+                </div>
+                <asp:Label Visible="false" class="text-danger" ID="errorGenderlbl" runat="server" Text="Label"></asp:Label>
+                
+                <asp:TextBox class="px-2" style="height: 50px;" ID="addressTxtbox" runat="server" placeholder="Address" type="text" ></asp:TextBox>
+                <asp:Label Visible="false" class="text-danger" ID="errorAddresslbl" runat="server" Text="Label"></asp:Label>
+                
+                <asp:TextBox class="px-2" style="height: 50px;" ID="passwordTxtbox" runat="server" placeholder="Password" type="password" ></asp:TextBox>
+                <asp:Label Visible="false" class="text-danger" ID="errorPaswordLbl" runat="server" Text="Label"></asp:Label>
+
                 <asp:Button class="btn btn-dark fw-bold" ID="Button1" runat="server" Text="Register" OnClick="Button1_Click" />
                 <p class="m-0"> Dah punya akun ? sini <a href="Login.aspx">Login</a></p>
             </div>    
         </div>
-
-        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
     </form>
 </body>
 </html>

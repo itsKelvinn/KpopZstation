@@ -23,6 +23,8 @@ namespace KpopZstation.View
             if (count > 0)
             {
                 ArtistCollect.Visible = true;
+                ArtistsRepeater.DataSource = Artists;
+                ArtistsRepeater.DataBind();
             }
             else
             {
@@ -37,7 +39,42 @@ namespace KpopZstation.View
             else if (customer != null && customer.CustomerRole.Equals("Admin"))
             {
                 username = customer.CustomerName;
+
+                foreach (RepeaterItem item in ArtistsRepeater.Items)
+                {
+                    Button deleteButton = item.FindControl("deletebtn") as Button;
+
+                    if (deleteButton != null)
+                    {
+                        deleteButton.Visible = true;
+                    }
+                }
+
+                foreach (RepeaterItem item in ArtistsRepeater.Items)
+                {
+                    HyperLink deleteButton = item.FindControl("updatebtn") as HyperLink;
+
+                    if (deleteButton != null)
+                    {
+                        deleteButton.Visible = true;
+                    }
+                }
+
                 AddNewArtistBtn.Visible = true;
+            }
+
+        }
+
+        protected void DeleteArtistBtn_Click(object sender, CommandEventArgs e)
+        {
+            username = "aku";
+
+            if (e.CommandName == "delete")
+            {
+
+                int artistID = Convert.ToInt32(e.CommandArgument); 
+                bool i = ArtistController.removeArtist(artistID);
+                Response.Redirect("Home.aspx");
             }
         }
     }

@@ -33,6 +33,15 @@ namespace KpopZstation.View
         protected global::System.Web.UI.WebControls.TextBox nameTxtbox;
 
         /// <summary>
+        /// errorNamelbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorNamelbl;
+
+        /// <summary>
         /// emailTxtbox control.
         /// </summary>
         /// <remarks>
@@ -40,6 +49,24 @@ namespace KpopZstation.View
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox emailTxtbox;
+
+        /// <summary>
+        /// errorEmaillbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorEmaillbl;
+
+        /// <summary>
+        /// Genderbox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Genderbox;
 
         /// <summary>
         /// genderRadioButtonList control.
@@ -51,6 +78,15 @@ namespace KpopZstation.View
         protected global::System.Web.UI.WebControls.RadioButtonList genderRadioButtonList;
 
         /// <summary>
+        /// errorGenderlbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorGenderlbl;
+
+        /// <summary>
         /// addressTxtbox control.
         /// </summary>
         /// <remarks>
@@ -58,6 +94,15 @@ namespace KpopZstation.View
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox addressTxtbox;
+
+        /// <summary>
+        /// errorAddresslbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorAddresslbl;
 
         /// <summary>
         /// passwordTxtbox control.
@@ -69,6 +114,15 @@ namespace KpopZstation.View
         protected global::System.Web.UI.WebControls.TextBox passwordTxtbox;
 
         /// <summary>
+        /// errorPaswordLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorPaswordLbl;
+
+        /// <summary>
         /// Button1 control.
         /// </summary>
         /// <remarks>
@@ -76,14 +130,5 @@ namespace KpopZstation.View
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
-
-        /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
     }
 }

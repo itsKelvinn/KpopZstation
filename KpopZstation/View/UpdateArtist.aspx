@@ -12,16 +12,23 @@
 <body>
     <form id="form1" runat="server">
         <div class="w-100 d-flex justify-content-center align-items-center " style="height: 100vh;">
-            <div class="border border-black p-5 d-flex flex-column gap-3">
+            <div class="border border-black p-5 d-flex flex-column gap-3" style="width:600px;">
                 <p class="fs-1 fw-bold m-0">Update Artist</p>
+
                 <div class="d-flex align-items-center gap-2">
-                    <div class="rounded-circle bg-black" style="width: 60px; height: 60px;"></div>
-                    <p class="m-0 fw-bold">Artist Name</p>
+                    <img src="<%= arImage %>" class="rounded-circle bg-black" style="width: 60px; height: 60px;" alt="Alternate Text" />
+                    <p class="m-0 fw-bold"><%= arName %></p>
                 </div>
-                <asp:TextBox class="px-2" ID="nameTxtbox" runat="server" placeholder="Username" type="text" ></asp:TextBox>
-                <asp:FileUpload ID="FileUpload" runat="server" />
+
+                <asp:TextBox class="px-2" style="height: 50px;" ID="nameTxtbox" runat="server" placeholder="Username" type="text" ></asp:TextBox>
+                <asp:Label class="text-danger" ID="errorArtistNamelbl" runat="server" Text="Label" Visible="false"></asp:Label>
+
+                <div class="p-2" id="FileUploadBox" runat="server">
+                    <asp:FileUpload ID="FileUpload" runat="server" />
+                </div>
+                <asp:Label class="text-danger" ID="errorArtistFilelbl" runat="server" Text="Label" Visible="false"></asp:Label>
                 
-                <asp:Button class="btn btn-dark fw-bold" ID="Button1" runat="server" Text="Update Artist" />
+                <asp:Button class="btn btn-dark fw-bold" ID="Button1" OnClick="UpdateArtistBtn" runat="server" Text="Update Artist" />
             </div>    
         </div>
     </form>
