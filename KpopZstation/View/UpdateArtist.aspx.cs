@@ -16,10 +16,6 @@ namespace KpopZstation.View
         public static int arID;
         public static string arImage;
         public static string arName;
-        
-
-        readonly string[] allowedExtensions = { ".jpg", ".jpeg", ".png", ".jfif" };
-        readonly int maxFileSize = 2 * 1024 * 1024;
 
         protected void Page_Load(object sender, EventArgs e)
         {

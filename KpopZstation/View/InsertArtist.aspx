@@ -12,7 +12,7 @@
 <body>
     <form id="form1" runat="server">
         <div class="w-100 d-flex justify-content-center align-items-center " style="height: 100vh;">
-            <div class="border border-black p-5 d-flex flex-column gap-3">
+            <div class="border border-black p-5 d-flex flex-column gap-3" style="width:500px;">
                 <p class="fs-1 fw-bold m-0">Insert Artist</p>
                 
                 <asp:TextBox class="px-2" style="height:50px;" ID="nameTxtbox" runat="server" placeholder="ArtistName" type="text" ></asp:TextBox>

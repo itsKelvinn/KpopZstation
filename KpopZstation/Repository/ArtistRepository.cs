@@ -33,6 +33,12 @@ namespace KpopZstation.Repository
 
         public static List<Album> getAllArtistAlbum(int ArtistID)
         {
+            Artist artist = DB.Artists.Find(ArtistID);
+            if(artist == null)
+            {
+                return null;
+            }
+
             return DB.Artists.Find(ArtistID).Albums.ToList();
         }
 

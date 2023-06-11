@@ -95,6 +95,7 @@
     <Content Include="View\AlbumDetail.aspx" />
     <Content Include="View\AlbumUpdate.aspx" />
     <Content Include="View\ArtistDetail.aspx" />
+    <Content Include="View\Cart.aspx" />
     <Content Include="View\CSS\AvatarNav.css" />
     <Content Include="View\CSS\Cards.css" />
     <Content Include="View\CSS\Globla.css" />
@@ -114,20 +115,29 @@
     <Compile Include="Controller\AlbumController.cs" />
     <Compile Include="Controller\ArtistController.cs" />
     <Compile Include="Controller\AuthController.cs" />
+    <Compile Include="Controller\CartController.cs" />
     <Compile Include="Controller\CustomerController.cs" />
     <Compile Include="Data\DatabaseConnector.cs" />
     <Compile Include="Factory\AlbumFactory.cs" />
     <Compile Include="Factory\ArtistFactory.cs" />
+    <Compile Include="Factory\CartFactory.cs" />
     <Compile Include="Factory\CustomerFactory.cs" />
     <Compile Include="Handler\AddAlbumArtistHandler.cs" />
+    <Compile Include="Handler\AddCartHandler.cs" />
     <Compile Include="Handler\AddCustomerHandler.cs" />
     <Compile Include="Handler\CheckArtistHandler.cs" />
+    <Compile Include="Handler\GetAlbumByIDHandler.cs" />
+    <Compile Include="Handler\GetAllCartHandler.cs" />
+    <Compile Include="Handler\RemoveAlbumHandler.cs" />
+    <Compile Include="Handler\RemoveAllCartHandle.cs" />
     <Compile Include="Handler\RemoveArtistHandler.cs" />
     <Compile Include="Handler\GetAllArtistAlbumHandler.cs" />
     <Compile Include="Handler\GetArtistByIDHandler.cs" />
     <Compile Include="Handler\GetCustomerHandler.cs" />
     <Compile Include="Handler\GetAllArtistHandler.cs" />
     <Compile Include="Handler\AddArtistHandler.cs" />
+    <Compile Include="Handler\RemoveCartHandler.cs" />
+    <Compile Include="Handler\UpdateAlbumHandler.cs" />
     <Compile Include="Handler\UpdateArtistHandler.cs" />
     <Compile Include="Model\Album.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -168,6 +178,7 @@
     <Compile Include="Repository\CustomerRepository.cs" />
     <Compile Include="Validator\AlbumValidator.cs" />
     <Compile Include="Validator\ArtistValidator.cs" />
+    <Compile Include="Repository\CartRepository.cs" />
     <Compile Include="Validator\RegisterValidator.cs" />
     <Compile Include="View\AlbumDetail.aspx.cs">
       <DependentUpon>AlbumDetail.aspx</DependentUpon>
@@ -189,6 +200,13 @@
     </Compile>
     <Compile Include="View\ArtistDetail.aspx.designer.cs">
       <DependentUpon>ArtistDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Cart.aspx.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Cart.aspx.designer.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>

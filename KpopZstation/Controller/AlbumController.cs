@@ -1,4 +1,5 @@
 ﻿using KpopZstation.Handler;
+using KpopZstation.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,21 @@ namespace KpopZstation.Controller
         {
             return AddAlbumArtistHandler.handle(ArtistID , AlbumName, AlbumImage, AlbumPrice, AlbumStock , AlbumDesc); 
         }
+
+        public static bool removeAlbum(int AlbumID)
+        {
+            return RemoveAlbumHandler.handle(AlbumID);
+        }
+
+        public static Album findAlbum(int AlbumID)
+        {
+            return GetAlbumByIDHandler.handle(AlbumID);
+        }
+
+        public static bool updateAlbum(int AlbumID, int AlbumStock, int AlbumPrice, string AlbumName, string AlbumDesc, string AlbumImage)
+        {
+            return UpdateAlbumHandler.handle(AlbumID, AlbumStock, AlbumPrice, AlbumName, AlbumDesc, AlbumImage);
+        }
+
     }
 }

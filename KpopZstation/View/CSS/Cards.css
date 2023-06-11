@@ -1,9 +1,13 @@
 ﻿.card {
-    width: 340px;
+    width: 341px;
     border: 1px solid black;
 }
 
-.card-img-top{
+#container{
+   gap: 17px;
+}
+
+.card-img-top {
     height: 300px;
     object-fit: cover;
 }

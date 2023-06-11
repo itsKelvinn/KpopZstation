@@ -14,10 +14,6 @@ namespace KpopZstation.View
 {
     public partial class InsertArtist : System.Web.UI.Page
     {
-        readonly string[] allowedExtensions = { ".jpg", ".jpeg", ".png", ".jfif" };
-        readonly int maxFileSize = 2 * 1024 * 1024;
-
-
         protected void Page_Load(object sender, EventArgs e)
         {
             Customer customer = AuthController.checkSession();

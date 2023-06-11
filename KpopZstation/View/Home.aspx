@@ -5,10 +5,10 @@
     
     <div class="w-100 d-flex flex-column gap-2 py-5">
 
-        <div class="w-100 d-flex flex-column justify-content-center" style="height:210px;" > 
+        <div class="w-100 d-flex flex-column justify-content-center align-items-center" style="height:210px;" > 
 
-            <p class="display-5 fw-bold m-0">Hi <%= username %></p>
-            <p class="display-5 fw-bold m-0">Welcome to the KpopZtation</p>
+            <p class="display-5 fw-bold m-0 text-center">Hi <%= username %></p>
+            <p class="display-5 fw-bold m-0 text-center">Welcome to the KpopZtation</p>
 
         </div>
 
@@ -27,37 +27,36 @@
 
             <asp:PlaceHolder runat="server" ID="ArtistCollect" Visible="false">
 
-                <div class="w-100 d-flex align-items-center flex-wrap border border-black p-3" style="min-height: 450px;">
+                <div class="w-100 d-flex border border-black p-3" style="min-height: 450px;">
                 
                     <%--Artist Cards--%>
-
-                    <asp:Repeater ID="ArtistsRepeater" runat="server">
-                        <ItemTemplate>
-                            <div class="card m-2">
-                                <img src="<%# Eval("ArtistImage") %>" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title fw-bold"><%# Eval("ArtistName") %></h5>
-                                    <div class="w-100 d-flex gap-2">
-                                        <a href="<%# "ArtistDetail.aspx/?id=" + Eval("ArtistID") %>" class="btn btn-dark" >View Artist</a>
-                                        <asp:HyperLink href='<%# "UpdateArtist.aspx/?id=" + Eval("ArtistID") %>' class="btn btn-warning" Visible="false" ID="updatebtn" runat="server" >Update</asp:HyperLink>
-                                        <asp:Button 
-                                            class="btn btn-danger" 
-                                            ID="deletebtn" 
-                                            runat="server" 
-                                            CommandName="delete" 
-                                            OnCommand="DeleteArtistBtn_Click" 
-                                            CommandArgument='<%# Eval("ArtistID") %>'  
-                                            Text="Delete" 
-                                            UseSubmitBehavior="false" 
-                                            Visible="false"
-                                        />
+                    <div class="w-100 d-flex flex-wrap" id="container">
+                        <asp:Repeater ID="ArtistsRepeater" runat="server">
+                            <ItemTemplate>
+                                <div class="card">
+                                    <img src="<%# Eval("ArtistImage") %>" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title fw-bold"><%# Eval("ArtistName") %></h5>
+                                        <div class="w-100 d-flex gap-2">
+                                            <a href="<%# "ArtistDetail.aspx/?id=" + Eval("ArtistID") %>" class="btn btn-dark" >View Artist</a>
+                                            <asp:HyperLink href='<%# "UpdateArtist.aspx/?id=" + Eval("ArtistID") %>' class="btn btn-warning" Visible="false" ID="updatebtn" runat="server" >Update</asp:HyperLink>
+                                            <asp:Button 
+                                                class="btn btn-danger" 
+                                                ID="deletebtn" 
+                                                runat="server" 
+                                                CommandName="delete" 
+                                                OnCommand="DeleteArtistBtn_Click" 
+                                                CommandArgument='<%# Eval("ArtistID") %>'  
+                                                Text="Delete" 
+                                                UseSubmitBehavior="false" 
+                                                Visible="false"
+                                            />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </ItemTemplate>
-                    </asp:Repeater>
-
-
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </div>
                 </div>
             </asp:PlaceHolder>
 

@@ -97,16 +97,16 @@ namespace KpopZstation.View
             else
             {
                 errorAlbumDescLabel.Visible = false;
-                albumDescTextArea.Style["border"] = "1px solid white";
-                albumDescTextArea.Style["background"] = "black";
+                albumDescTextArea.Style["border"] = "1px solid black";
+                albumDescTextArea.Style["background"] = "white";
             }
 
             if (AlbumValidator.albumImageValidate(AlbumPicFileName, AlbumPicSize))
             {
                 errorAlbumFileLabel.Visible = true;
                 errorAlbumFileLabel.Text = "Must be chosen, file extension must be .png, .jpg, .jpeg, or .jfif, and file size must be lower than 2MB";
-                uploadFileBorder.Style["border"] = "1px solid black";
-                uploadFileBorder.Style["background"] = "white";
+                uploadFileBorder.Style["border"] = "1px solid #DC4C64";
+                uploadFileBorder.Style["background"] = "#ffebee";
                 validateCountCheck++;
             }
             else

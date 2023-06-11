@@ -14,26 +14,37 @@
         <div class="w-100 d-flex justify-content-center align-items-center " style="height: 100vh;">
          
             
-            <div class="border border-black p-5 d-flex flex-column gap-3">
+            <div class="border border-black p-4 d-flex flex-column gap-3">
                 
                 <div class="d-flex align-items-center border border-black p-2 gap-4">
-                    <div class="bg-black" style="width:100px; height: 100px;"></div>
-                    <p class="m-0 fw-bold">Album Name</p>
-                    <p class="m-0 fw-bold">IDR 1.000.000</p>
-                    <p class="m-0 fw-bold" style="width:600px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galle</p>
+                    <img src="<%=album.AlbumImage %>" alt="Alternate Text" style="width:100px; height: 100px;" />
+                    <p class="m-0 fw-bold"><%= album.AlbumName %></p>
+                    <p class="m-0 fw-bold">IDR <%= album.AlbumPrice %></p>
+                    <p class="m-0 fw-bold" style="width:600px;"><%= album.AlbumDescription %></p>
                 </div>
 
                 <p class="fs-1 fw-bold m-0">Update Album</p>
-                <asp:TextBox class="px-2" ID="nameTxtbox" runat="server" placeholder="Album Name" type="text" ></asp:TextBox>
-                <asp:TextBox class="px-2" ID="priceTxtbox" runat="server" placeholder="Album Price" type="text" ></asp:TextBox>
-                <asp:TextBox class="px-2" ID="stoctTxtbox" runat="server" placeholder="Album Stock" type="text" ></asp:TextBox>
+                <asp:TextBox style="height:50px;" class="px-2" ID="albumNameTxtbox" runat="server" placeholder="Album Name" type="text" ></asp:TextBox>
+                <asp:Label class="text-danger" ID="errorAlbumNamelbl" runat="server" Text="Label" Visible="false" ></asp:Label>
+
+                <asp:TextBox style="height:50px;" class="px-2" ID="albumPriceTxtbox" runat="server" placeholder="Album Price" type="text" ></asp:TextBox>
+                <asp:Label class="text-danger" ID="errorAlbumPricelbl" runat="server" Text="Label" Visible="false" ></asp:Label>
+
+                <asp:TextBox style="height:50px;" class="px-2" ID="albumStockTxtbox" runat="server" placeholder="Album Stock" type="text" ></asp:TextBox>
+                <asp:Label class="text-danger" ID="errorAlbumStocklbl" runat="server" Text="Label" Visible="false" ></asp:Label>
+
                 <div class="d-flex flex-column">
-                    <asp:Label  ID="Label1" runat="server" Text="Descripton"></asp:Label>
-                    <textarea class="px-2" id="descTxtarea" cols="20" rows="2" ></textarea>
+                    <asp:Label  ID="Label1" runat="server" Text="Descripton" ></asp:Label>
+                    <textarea class="px-2" style="height:100px;" id="albumDescTxtarea" runat="server" cols="20" rows="2" ></textarea>
                 </div>    
-                <asp:FileUpload ID="FileUpload" runat="server" />
-                
-                <asp:Button class="btn btn-dark fw-bold" ID="Button1" runat="server" Text="Update Album" />
+                <asp:Label class="text-danger" ID="errorAlbumDesclbl" runat="server" Text="Label" Visible="false" ></asp:Label>
+
+                <div id="FileUploadBox" class="p-2" runat="server">
+                    <asp:FileUpload ID="FileUpload" runat="server" />
+                </div>
+                <asp:Label class="text-danger" ID="errorAlbumFileUploadlbl" runat="server" Text="Label" Visible="false"></asp:Label>
+
+                <asp:Button class="btn btn-dark fw-bold" ID="Button1" OnClick="Update_Album_Button" runat="server" Text="Update Album" />
             </div>    
         </div>
     </form>

@@ -20,8 +20,8 @@
                     Invalid email or password. Please try again.
                 </asp:Label>
                 
-                <asp:TextBox class="px-2" style="height: 50px;" ID="emailTxtbox" runat="server" placeholder="Username" type="text" ></asp:TextBox>
-                <asp:TextBox class="px-2" style="height: 50px;" ID="passwordTxtbox" runat="server" placeholder="Password" type="password" ></asp:TextBox>
+                <asp:TextBox class="px-2 fw-bold" style="height: 50px;" ID="emailTxtbox" runat="server" placeholder="Email" type="text" AutoCompleteType="Disabled" ></asp:TextBox>
+                <asp:TextBox class="px-2 fw-bold" style="height: 50px;" ID="passwordTxtbox" runat="server" placeholder="Password" type="password" AutoCompleteType="Disabled" ></asp:TextBox>
                 
                 <div class="w-100 d-flex align-items-center gap-2" >
                     <asp:CheckBox ID="CheckBox" runat="server" />

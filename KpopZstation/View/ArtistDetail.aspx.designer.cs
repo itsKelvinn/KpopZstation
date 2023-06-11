@@ -33,31 +33,13 @@ namespace KpopZstation.View
         protected global::System.Web.UI.WebControls.PlaceHolder AlbumCollection;
 
         /// <summary>
-        /// albumDetail control.
+        /// Repeater control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button albumDetail;
-
-        /// <summary>
-        /// updateBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button updateBtn;
-
-        /// <summary>
-        /// deleteBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button deleteBtn;
+        protected global::System.Web.UI.WebControls.Repeater Repeater;
 
         /// <summary>
         /// AlbumEmpty control.

@@ -13,48 +13,48 @@ namespace KpopZstation.Validator
 
         public static bool albumNameValidate(string AlbumName)
         {
-            if(AlbumName.Length < 50)
+            if(AlbumName.Length > 50 || AlbumName.Equals(""))
             {
-                return false;
+                return true;
             }
-            return true;
+            return false;
         } 
 
         public static bool albumDescValidate(string AlbumDesc)
         {
-            if(AlbumDesc.Length < 255)
+            if(AlbumDesc.Length > 255 || AlbumDesc.Equals(""))
             {
-                return false;
+                return true;
             }
-            return true;   
+            return false;   
         }
 
         public static bool albumPriceValidate(int AlbumPrice)
         {
-            if(AlbumPrice < 1000000 && AlbumPrice > 100000)
+            if(AlbumPrice > 1000000 || AlbumPrice < 100000)
             {
-                return false;
+                return true;
             }
-            return true;   
+            return false;   
         }
 
         public static bool albumStockValidate(int AlbumStock)
         {
-            if(AlbumStock > 0)
+            if(AlbumStock == 0)
             {
-                return false;
+                return true;
             }
-            return true;   
+            return false;   
         }
 
         public static bool albumImageValidate(string AlbumImage, int ImageSize)
         {
             bool isExtensionAllowed = allowedExtensions.Any(ext => AlbumImage.EndsWith(ext, StringComparison.OrdinalIgnoreCase));
-            if (isExtensionAllowed && ImageSize < maxFileSize)
+            if (!isExtensionAllowed || ImageSize > maxFileSize)
             {
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
 
     }

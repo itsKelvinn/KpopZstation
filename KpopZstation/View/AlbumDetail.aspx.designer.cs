@@ -15,6 +15,15 @@ namespace KpopZstation.View
     {
 
         /// <summary>
+        /// ChartBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ChartBox;
+
+        /// <summary>
         /// decreaseButton control.
         /// </summary>
         /// <remarks>
@@ -24,13 +33,13 @@ namespace KpopZstation.View
         protected global::System.Web.UI.WebControls.Button decreaseButton;
 
         /// <summary>
-        /// valueTextBox control.
+        /// quantityTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label valueTextBox;
+        protected global::System.Web.UI.WebControls.Label quantityTextBox;
 
         /// <summary>
         /// increaseButton control.
@@ -40,6 +49,15 @@ namespace KpopZstation.View
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button increaseButton;
+
+        /// <summary>
+        /// errorQuantitylbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorQuantitylbl;
 
         /// <summary>
         /// addchartBtn control.
