@@ -38,5 +38,10 @@ namespace KpopZstation.Controller
         {
             return UpdateArtistHandler.handler(ArtistID, ArtistName, ArtistImage); 
         }
+
+        public static Artist getArtistByName(string ArtistName)
+        {
+            return getArtistByNameHandler.handle(ArtistName);
+        } 
     }
 }

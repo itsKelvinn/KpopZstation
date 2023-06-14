@@ -95,5 +95,10 @@ namespace KpopZstation.Repository
             return false;
         }
 
+        public static Artist GetArtistByName(string artistName)
+        {
+            Artist artist = DB.Artists.FirstOrDefault(a => a.ArtistName == artistName);
+            return artist;
+        }
     }
 }

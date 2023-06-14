@@ -46,5 +46,11 @@ namespace KpopZstation.Repository
             DB.SaveChanges();
         }
 
+        public static Customer getCustomerByEmail(string CustomerEmail)
+        {
+            Customer customer = DB.Customers.FirstOrDefault(a => a.CustomerEmail == CustomerEmail);
+            return customer;
+        }
+
     }
 }

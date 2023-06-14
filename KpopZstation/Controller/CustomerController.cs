@@ -29,5 +29,10 @@ namespace KpopZstation.Controller
             RemoveAccountHandler.handle(CustomerID);
         }
 
+        public static Customer checkUnikEmail(string CustomerEmail)
+        {
+            return CheckCustomerEmailHandler.handle(CustomerEmail);
+        }
+
     }
 }

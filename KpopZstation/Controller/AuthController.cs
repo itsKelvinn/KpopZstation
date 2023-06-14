@@ -38,10 +38,15 @@ namespace KpopZstation.Controller
 
                 if (rmCookie)
                 {
-                    HttpCookie cookie = new HttpCookie("RememberMeCookie");
-                    cookie.Value = HttpContext.Current.Session.SessionID;
-                    cookie.Expires = DateTime.Now.AddMinutes(5);
-                    HttpContext.Current.Response.Cookies.Add(cookie);
+                    HttpCookie Emailcookie = new HttpCookie("username");
+                    Emailcookie.Value = CustomerEmail;
+                    Emailcookie.Expires = DateTime.Now.AddMinutes(5);
+                    HttpContext.Current.Response.Cookies.Add(Emailcookie);
+
+                    HttpCookie Passwordcookie = new HttpCookie("password");
+                    Passwordcookie.Value = CustomerPassword;
+                    Passwordcookie.Expires = DateTime.Now.AddMinutes(5);
+                    HttpContext.Current.Response.Cookies.Add(Passwordcookie);
                 }
 
                 return true;
@@ -50,11 +55,6 @@ namespace KpopZstation.Controller
 
         public static void logout()
         {
-            try
-            {
-                HttpContext.Current.Response.Cookies.Get("RememberMeCookie").Expires = DateTime.Now.AddDays(-30);
-            }
-            catch { }
             HttpContext.Current.Session.Remove("login");
             HttpContext.Current.Response.Redirect("Home.aspx");
         }

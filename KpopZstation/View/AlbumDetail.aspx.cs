@@ -78,6 +78,7 @@ namespace KpopZstation.View
                 if (cart != null)
                 {
                     CartController.updateCart(CusID, AlbID, quantity);
+                    Response.Redirect("/View/ArtistDetail.aspx/?id=" + album.ArtistID);
                 }
                 else
                 {

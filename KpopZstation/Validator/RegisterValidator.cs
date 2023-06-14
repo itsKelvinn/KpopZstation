@@ -1,4 +1,6 @@
-﻿using System;
+﻿using KpopZstation.Controller;
+using KpopZstation.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -23,12 +25,9 @@ namespace KpopZstation.Validator
         // Email Validator
         public static bool emailValidate(string CustomerEmails)
         {
-            if (string.IsNullOrEmpty(CustomerEmails))
-            {
-                return true;
-            }
+            Customer customer = CustomerController.checkUnikEmail(CustomerEmails);
 
-            if (!CustomerEmails.Contains("@email"))
+            if (string.IsNullOrEmpty(CustomerEmails) || !CustomerEmails.Contains("@") || customer != null)
             {
                 return true;
             }

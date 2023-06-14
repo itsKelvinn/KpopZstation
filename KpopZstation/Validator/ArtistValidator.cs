@@ -1,4 +1,6 @@
-﻿using KpopZstation.Handler;
+﻿using KpopZstation.Controller;
+using KpopZstation.Handler;
+using KpopZstation.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +15,9 @@ namespace KpopZstation.Validator
 
         public static bool artistNameValidate(string ArtistName) 
         {
-            if (ArtistName == null || ArtistName.Equals(""))
+             Artist artist = ArtistController.getArtistByName(ArtistName);
+
+            if (ArtistName == null || ArtistName.Equals("") || artist != null)
             {
                 return true;
             }
@@ -31,6 +35,5 @@ namespace KpopZstation.Validator
             }
             return true;
         }
-
     }
 }

@@ -17,6 +17,19 @@ namespace KpopZstation.View
                 Response.Redirect("Home.aspx");
             }
 
+            HttpCookie usernameCookie = HttpContext.Current.Request.Cookies["username"];
+            if (usernameCookie != null)
+            {
+                emailTxtbox.Text = usernameCookie.Value;
+            }
+
+            HttpCookie passwordCookie = HttpContext.Current.Request.Cookies["password"];
+            if (passwordCookie != null)
+            {
+                passwordTxtbox.Text = passwordCookie.Value;
+            }
+
+
         }
 
         protected void loginBtn(object sender, EventArgs e)

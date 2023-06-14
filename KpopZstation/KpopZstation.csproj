@@ -107,7 +107,6 @@
     <Content Include="View\TransactionHistory.aspx" />
     <Content Include="View\UpdateArtist.aspx" />
     <Content Include="View\UpdateProfile.aspx" />
-    <Content Include="View\UpdateUser.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -130,9 +129,11 @@
     <Compile Include="Handler\AddTransactionDetailHandler.cs" />
     <Compile Include="Handler\AddTransactionHeaderHandler.cs" />
     <Compile Include="Handler\CheckArtistHandler.cs" />
+    <Compile Include="Handler\CheckCustomerEmailHandler.cs" />
     <Compile Include="Handler\GetAlbumByIDHandler.cs" />
     <Compile Include="Handler\GetAllCartHandler.cs" />
     <Compile Include="Handler\GetAllTransactionHeaderHandler.cs" />
+    <Compile Include="Handler\getArtistByNameHandler.cs" />
     <Compile Include="Handler\GetCartHandler.cs" />
     <Compile Include="Handler\GetAllTransactionDetailHandler.cs" />
     <Compile Include="Handler\GetTransactionDetailHandler.cs" />
@@ -283,13 +284,6 @@
     </Compile>
     <Compile Include="View\UpdateProfile.aspx.designer.cs">
       <DependentUpon>UpdateProfile.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="View\UpdateUser.aspx.cs">
-      <DependentUpon>UpdateUser.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View\UpdateUser.aspx.designer.cs">
-      <DependentUpon>UpdateUser.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
