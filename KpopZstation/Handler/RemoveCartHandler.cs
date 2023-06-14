@@ -9,9 +9,9 @@ namespace KpopZstation.Handler
 {
     public class RemoveCartHandler
     {
-        public static bool handle(Cart cart)
+        public static bool handle(int CustomerID, int AlbumID)
         {
-            return CartRepository.deleteCart(cart);
+            return CartRepository.deleteCart(CustomerID, AlbumID);
         }
     }
 }

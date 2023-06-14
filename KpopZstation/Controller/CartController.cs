@@ -3,6 +3,7 @@ using KpopZstation.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 
 namespace KpopZstation.Controller
@@ -18,15 +19,25 @@ namespace KpopZstation.Controller
         {
             return GetAllCartHandler.handle(CustomerID);
         }
-
-        public static bool removeCart(Cart cart)
+        
+        public static bool updateCart(int CustomerID, int AlbumID , int Quantity)
         {
-            return RemoveCartHandler.handle(cart);
+            return UpdateCartHandler.handle(CustomerID, AlbumID , Quantity);
+        }
+
+        public static bool removeCart(int CustomerID, int AlbumID)
+        {
+            return RemoveCartHandler.handle(CustomerID,AlbumID);
         }
 
         public static bool removeAllCart(int CustomerID)
         {
             return RemoveAllCartHandle.handle(CustomerID);
+        }
+
+        public static Cart checkCart(int CustomerID, int AlbumID)
+        {
+            return GetCartHandler.handle(CustomerID,AlbumID);
         }
 
     }

@@ -12,8 +12,8 @@ namespace KpopZstation.Handler
     {
         public static bool handle(int CustomerID , int AlbumID , int Quantity)
         {
-            Cart cart = CartFactory.createCart(CustomerID , AlbumID , Quantity);
-            return CartRepository.addChart(cart); 
+            Cart cart = CartFactory.createCart(CustomerID, AlbumID, Quantity);
+            return CartRepository.addChart(cart);
         }
     }
 }

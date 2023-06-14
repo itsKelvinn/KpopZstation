@@ -13,14 +13,13 @@ namespace KpopZstation.View
     public partial class Home : System.Web.UI.Page
     {
         public string username = "Guest";
-        public static List<Artist> Artists = ArtistController.getAllArtist();
-        public int count = Artists.Count;
+        public static List<Artist> Artists;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             Artists = ArtistController.getAllArtist();
 
-            if (count > 0)
+            if (Artists.Count > 0)
             {
                 ArtistCollect.Visible = true;
                 ArtistsRepeater.DataSource = Artists;
@@ -70,7 +69,11 @@ namespace KpopZstation.View
             {
                 int artistID = Convert.ToInt32(e.CommandArgument); 
                 ArtistController.removeArtist(artistID);
-                Response.Redirect("Home.aspx");
+
+                // Refresh
+                Artists = ArtistController.getAllArtist();
+                ArtistsRepeater.DataSource = Artists;
+                ArtistsRepeater.DataBind();
             }
         }
     }

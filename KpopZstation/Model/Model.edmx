@@ -25,14 +25,13 @@
           <Property Name="ArtistName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ArtistImage" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\KELVI\DOWNLOADS\DESKTOP\PATTERN SOFTWARE DESIGN\KPOPZSTATION\KPOPZSTATION\APP_DATA\DATABASE.MDF.dbo.Cart' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Cart">
           <Key>
-            <PropertyRef Name="Qty" />
+            <PropertyRef Name="CustomerID" />
+            <PropertyRef Name="AlbumID" />
           </Key>
-          <Property Name="CustomerID" Type="int" />
-          <Property Name="AlbumID" Type="int" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="AlbumID" Type="int" Nullable="false" />
           <Property Name="Qty" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Customer">
@@ -47,14 +46,13 @@ warning 6002: The table/view 'C:\USERS\KELVI\DOWNLOADS\DESKTOP\PATTERN SOFTWARE 
           <Property Name="CustomerAddress" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="CustomerRole" Type="varchar" MaxLength="5" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\KELVI\DOWNLOADS\DESKTOP\PATTERN SOFTWARE DESIGN\KPOPZSTATION\KPOPZSTATION\APP_DATA\DATABASE.MDF.dbo.TransactioDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="TransactioDetail">
           <Key>
-            <PropertyRef Name="Qty" />
+            <PropertyRef Name="TransactionID" />
+            <PropertyRef Name="AlbumID" />
           </Key>
-          <Property Name="TransactionID" Type="int" />
-          <Property Name="AlbumID" Type="int" />
+          <Property Name="TransactionID" Type="int" Nullable="false" />
+          <Property Name="AlbumID" Type="int" Nullable="false" />
           <Property Name="Qty" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="TransactionHeader">
@@ -77,8 +75,8 @@ warning 6002: The table/view 'C:\USERS\KELVI\DOWNLOADS\DESKTOP\PATTERN SOFTWARE 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cart__AlbumID__4316F928">
-          <End Role="Album" Type="Self.Album" Multiplicity="0..1" />
+        <Association Name="FK__Cart__AlbumID__44FF419A">
+          <End Role="Album" Type="Self.Album" Multiplicity="1" />
           <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Album">
@@ -89,8 +87,8 @@ warning 6002: The table/view 'C:\USERS\KELVI\DOWNLOADS\DESKTOP\PATTERN SOFTWARE 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cart__CustomerID__4222D4EF">
-          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+        <Association Name="FK__Cart__CustomerID__440B1D61">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
           <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customer">
@@ -101,8 +99,8 @@ warning 6002: The table/view 'C:\USERS\KELVI\DOWNLOADS\DESKTOP\PATTERN SOFTWARE 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Transacti__Album__403A8C7D">
-          <End Role="Album" Type="Self.Album" Multiplicity="0..1" />
+        <Association Name="FK__Transacti__Album__412EB0B6">
+          <End Role="Album" Type="Self.Album" Multiplicity="1" />
           <End Role="TransactioDetail" Type="Self.TransactioDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Album">
@@ -125,8 +123,8 @@ warning 6002: The table/view 'C:\USERS\KELVI\DOWNLOADS\DESKTOP\PATTERN SOFTWARE 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Transacti__Trans__3F466844">
-          <End Role="TransactionHeader" Type="Self.TransactionHeader" Multiplicity="0..1" />
+        <Association Name="FK__Transacti__Trans__403A8C7D">
+          <End Role="TransactionHeader" Type="Self.TransactionHeader" Multiplicity="1" />
           <End Role="TransactioDetail" Type="Self.TransactioDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TransactionHeader">
@@ -140,35 +138,23 @@ warning 6002: The table/view 'C:\USERS\KELVI\DOWNLOADS\DESKTOP\PATTERN SOFTWARE 
         <EntityContainer Name="DatabaseModelStoreContainer">
           <EntitySet Name="Album" EntityType="Self.Album" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Artist" EntityType="Self.Artist" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransactioDetail" EntityType="Self.TransactioDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TransactionHeader" EntityType="Self.TransactionHeader" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Cart" EntityType="Self.Cart" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Cart].[CustomerID] AS [CustomerID], 
-    [Cart].[AlbumID] AS [AlbumID], 
-    [Cart].[Qty] AS [Qty]
-    FROM [dbo].[Cart] AS [Cart]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="TransactioDetail" EntityType="Self.TransactioDetail" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [TransactioDetail].[TransactionID] AS [TransactionID], 
-    [TransactioDetail].[AlbumID] AS [AlbumID], 
-    [TransactioDetail].[Qty] AS [Qty]
-    FROM [dbo].[TransactioDetail] AS [TransactioDetail]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK__Album__ArtistID__3D5E1FD2" Association="Self.FK__Album__ArtistID__3D5E1FD2">
             <End Role="Artist" EntitySet="Artist" />
             <End Role="Album" EntitySet="Album" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cart__AlbumID__4316F928" Association="Self.FK__Cart__AlbumID__4316F928">
+          <AssociationSet Name="FK__Cart__AlbumID__44FF419A" Association="Self.FK__Cart__AlbumID__44FF419A">
             <End Role="Album" EntitySet="Album" />
             <End Role="Cart" EntitySet="Cart" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cart__CustomerID__4222D4EF" Association="Self.FK__Cart__CustomerID__4222D4EF">
+          <AssociationSet Name="FK__Cart__CustomerID__440B1D61" Association="Self.FK__Cart__CustomerID__440B1D61">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Cart" EntitySet="Cart" />
           </AssociationSet>
-          <AssociationSet Name="FK__Transacti__Album__403A8C7D" Association="Self.FK__Transacti__Album__403A8C7D">
+          <AssociationSet Name="FK__Transacti__Album__412EB0B6" Association="Self.FK__Transacti__Album__412EB0B6">
             <End Role="Album" EntitySet="Album" />
             <End Role="TransactioDetail" EntitySet="TransactioDetail" />
           </AssociationSet>
@@ -176,7 +162,7 @@ warning 6002: The table/view 'C:\USERS\KELVI\DOWNLOADS\DESKTOP\PATTERN SOFTWARE 
             <End Role="Customer" EntitySet="Customer" />
             <End Role="TransactionHeader" EntitySet="TransactionHeader" />
           </AssociationSet>
-          <AssociationSet Name="FK__Transacti__Trans__3F466844" Association="Self.FK__Transacti__Trans__3F466844">
+          <AssociationSet Name="FK__Transacti__Trans__403A8C7D" Association="Self.FK__Transacti__Trans__403A8C7D">
             <End Role="TransactionHeader" EntitySet="TransactionHeader" />
             <End Role="TransactioDetail" EntitySet="TransactioDetail" />
           </AssociationSet>
@@ -198,8 +184,8 @@ warning 6002: The table/view 'C:\USERS\KELVI\DOWNLOADS\DESKTOP\PATTERN SOFTWARE 
           <Property Name="AlbumStock" Type="Int32" Nullable="false" />
           <Property Name="AlbumDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Artist" Relationship="Self.FK__Album__ArtistID__3D5E1FD2" FromRole="Album" ToRole="Artist" />
-          <NavigationProperty Name="Carts" Relationship="Self.FK__Cart__AlbumID__4316F928" FromRole="Album" ToRole="Cart" />
-          <NavigationProperty Name="TransactioDetails" Relationship="Self.FK__Transacti__Album__403A8C7D" FromRole="Album" ToRole="TransactioDetail" />
+          <NavigationProperty Name="Carts" Relationship="Self.FK__Cart__AlbumID__44FF419A" FromRole="Album" ToRole="Cart" />
+          <NavigationProperty Name="TransactioDetails" Relationship="Self.FK__Transacti__Album__412EB0B6" FromRole="Album" ToRole="TransactioDetail" />
         </EntityType>
         <EntityType Name="Artist">
           <Key>
@@ -209,6 +195,17 @@ warning 6002: The table/view 'C:\USERS\KELVI\DOWNLOADS\DESKTOP\PATTERN SOFTWARE 
           <Property Name="ArtistName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ArtistImage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Albums" Relationship="Self.FK__Album__ArtistID__3D5E1FD2" FromRole="Artist" ToRole="Album" />
+        </EntityType>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+            <PropertyRef Name="AlbumID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="AlbumID" Type="Int32" Nullable="false" />
+          <Property Name="Qty" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Album" Relationship="Self.FK__Cart__AlbumID__44FF419A" FromRole="Cart" ToRole="Album" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__Cart__CustomerID__440B1D61" FromRole="Cart" ToRole="Customer" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -221,8 +218,19 @@ warning 6002: The table/view 'C:\USERS\KELVI\DOWNLOADS\DESKTOP\PATTERN SOFTWARE 
           <Property Name="CustomerGender" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CustomerAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CustomerRole" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Carts" Relationship="Self.FK__Cart__CustomerID__4222D4EF" FromRole="Customer" ToRole="Cart" />
+          <NavigationProperty Name="Carts" Relationship="Self.FK__Cart__CustomerID__440B1D61" FromRole="Customer" ToRole="Cart" />
           <NavigationProperty Name="TransactionHeaders" Relationship="Self.FK__Transacti__Custo__38996AB5" FromRole="Customer" ToRole="TransactionHeader" />
+        </EntityType>
+        <EntityType Name="TransactioDetail">
+          <Key>
+            <PropertyRef Name="TransactionID" />
+            <PropertyRef Name="AlbumID" />
+          </Key>
+          <Property Name="TransactionID" Type="Int32" Nullable="false" />
+          <Property Name="AlbumID" Type="Int32" Nullable="false" />
+          <Property Name="Qty" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Album" Relationship="Self.FK__Transacti__Album__412EB0B6" FromRole="TransactioDetail" ToRole="Album" />
+          <NavigationProperty Name="TransactionHeader" Relationship="Self.FK__Transacti__Trans__403A8C7D" FromRole="TransactioDetail" ToRole="TransactionHeader" />
         </EntityType>
         <EntityType Name="TransactionHeader">
           <Key>
@@ -232,27 +240,7 @@ warning 6002: The table/view 'C:\USERS\KELVI\DOWNLOADS\DESKTOP\PATTERN SOFTWARE 
           <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="CustomerID" Type="Int32" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__Transacti__Custo__38996AB5" FromRole="TransactionHeader" ToRole="Customer" />
-          <NavigationProperty Name="TransactioDetails" Relationship="Self.FK__Transacti__Trans__3F466844" FromRole="TransactionHeader" ToRole="TransactioDetail" />
-        </EntityType>
-        <EntityType Name="Cart">
-          <Key>
-            <PropertyRef Name="Qty" />
-          </Key>
-          <Property Name="CustomerID" Type="Int32" />
-          <Property Name="AlbumID" Type="Int32" />
-          <Property Name="Qty" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Album" Relationship="Self.FK__Cart__AlbumID__4316F928" FromRole="Cart" ToRole="Album" />
-          <NavigationProperty Name="Customer" Relationship="Self.FK__Cart__CustomerID__4222D4EF" FromRole="Cart" ToRole="Customer" />
-        </EntityType>
-        <EntityType Name="TransactioDetail">
-          <Key>
-            <PropertyRef Name="Qty" />
-          </Key>
-          <Property Name="TransactionID" Type="Int32" />
-          <Property Name="AlbumID" Type="Int32" />
-          <Property Name="Qty" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Album" Relationship="Self.FK__Transacti__Album__403A8C7D" FromRole="TransactioDetail" ToRole="Album" />
-          <NavigationProperty Name="TransactionHeader" Relationship="Self.FK__Transacti__Trans__3F466844" FromRole="TransactioDetail" ToRole="TransactionHeader" />
+          <NavigationProperty Name="TransactioDetails" Relationship="Self.FK__Transacti__Trans__403A8C7D" FromRole="TransactionHeader" ToRole="TransactioDetail" />
         </EntityType>
         <Association Name="FK__Album__ArtistID__3D5E1FD2">
           <End Role="Artist" Type="Self.Artist" Multiplicity="0..1" />
@@ -266,8 +254,8 @@ warning 6002: The table/view 'C:\USERS\KELVI\DOWNLOADS\DESKTOP\PATTERN SOFTWARE 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cart__AlbumID__4316F928">
-          <End Role="Album" Type="Self.Album" Multiplicity="0..1" />
+        <Association Name="FK__Cart__AlbumID__44FF419A">
+          <End Role="Album" Type="Self.Album" Multiplicity="1" />
           <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Album">
@@ -278,8 +266,8 @@ warning 6002: The table/view 'C:\USERS\KELVI\DOWNLOADS\DESKTOP\PATTERN SOFTWARE 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Transacti__Album__403A8C7D">
-          <End Role="Album" Type="Self.Album" Multiplicity="0..1" />
+        <Association Name="FK__Transacti__Album__412EB0B6">
+          <End Role="Album" Type="Self.Album" Multiplicity="1" />
           <End Role="TransactioDetail" Type="Self.TransactioDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Album">
@@ -290,8 +278,8 @@ warning 6002: The table/view 'C:\USERS\KELVI\DOWNLOADS\DESKTOP\PATTERN SOFTWARE 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cart__CustomerID__4222D4EF">
-          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+        <Association Name="FK__Cart__CustomerID__440B1D61">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
           <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customer">
@@ -314,8 +302,8 @@ warning 6002: The table/view 'C:\USERS\KELVI\DOWNLOADS\DESKTOP\PATTERN SOFTWARE 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Transacti__Trans__3F466844">
-          <End Role="TransactionHeader" Type="Self.TransactionHeader" Multiplicity="0..1" />
+        <Association Name="FK__Transacti__Trans__403A8C7D">
+          <End Role="TransactionHeader" Type="Self.TransactionHeader" Multiplicity="1" />
           <End Role="TransactioDetail" Type="Self.TransactioDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TransactionHeader">
@@ -329,23 +317,23 @@ warning 6002: The table/view 'C:\USERS\KELVI\DOWNLOADS\DESKTOP\PATTERN SOFTWARE 
         <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Albums" EntityType="Self.Album" />
           <EntitySet Name="Artists" EntityType="Self.Artist" />
-          <EntitySet Name="Customers" EntityType="Self.Customer" />
-          <EntitySet Name="TransactionHeaders" EntityType="Self.TransactionHeader" />
           <EntitySet Name="Carts" EntityType="Self.Cart" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
           <EntitySet Name="TransactioDetails" EntityType="Self.TransactioDetail" />
+          <EntitySet Name="TransactionHeaders" EntityType="Self.TransactionHeader" />
           <AssociationSet Name="FK__Album__ArtistID__3D5E1FD2" Association="Self.FK__Album__ArtistID__3D5E1FD2">
             <End Role="Artist" EntitySet="Artists" />
             <End Role="Album" EntitySet="Albums" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cart__AlbumID__4316F928" Association="Self.FK__Cart__AlbumID__4316F928">
+          <AssociationSet Name="FK__Cart__AlbumID__44FF419A" Association="Self.FK__Cart__AlbumID__44FF419A">
             <End Role="Album" EntitySet="Albums" />
             <End Role="Cart" EntitySet="Carts" />
           </AssociationSet>
-          <AssociationSet Name="FK__Transacti__Album__403A8C7D" Association="Self.FK__Transacti__Album__403A8C7D">
+          <AssociationSet Name="FK__Transacti__Album__412EB0B6" Association="Self.FK__Transacti__Album__412EB0B6">
             <End Role="Album" EntitySet="Albums" />
             <End Role="TransactioDetail" EntitySet="TransactioDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cart__CustomerID__4222D4EF" Association="Self.FK__Cart__CustomerID__4222D4EF">
+          <AssociationSet Name="FK__Cart__CustomerID__440B1D61" Association="Self.FK__Cart__CustomerID__440B1D61">
             <End Role="Customer" EntitySet="Customers" />
             <End Role="Cart" EntitySet="Carts" />
           </AssociationSet>
@@ -353,7 +341,7 @@ warning 6002: The table/view 'C:\USERS\KELVI\DOWNLOADS\DESKTOP\PATTERN SOFTWARE 
             <End Role="Customer" EntitySet="Customers" />
             <End Role="TransactionHeader" EntitySet="TransactionHeaders" />
           </AssociationSet>
-          <AssociationSet Name="FK__Transacti__Trans__3F466844" Association="Self.FK__Transacti__Trans__3F466844">
+          <AssociationSet Name="FK__Transacti__Trans__403A8C7D" Association="Self.FK__Transacti__Trans__403A8C7D">
             <End Role="TransactionHeader" EntitySet="TransactionHeaders" />
             <End Role="TransactioDetail" EntitySet="TransactioDetails" />
           </AssociationSet>
@@ -386,6 +374,15 @@ warning 6002: The table/view 'C:\USERS\KELVI\DOWNLOADS\DESKTOP\PATTERN SOFTWARE 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Carts">
+            <EntityTypeMapping TypeName="DatabaseModel.Cart">
+              <MappingFragment StoreEntitySet="Cart">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="AlbumID" ColumnName="AlbumID" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="DatabaseModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
@@ -399,30 +396,21 @@ warning 6002: The table/view 'C:\USERS\KELVI\DOWNLOADS\DESKTOP\PATTERN SOFTWARE 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TransactionHeaders">
-            <EntityTypeMapping TypeName="DatabaseModel.TransactionHeader">
-              <MappingFragment StoreEntitySet="TransactionHeader">
-                <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
-                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
-                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Carts">
-            <EntityTypeMapping TypeName="DatabaseModel.Cart">
-              <MappingFragment StoreEntitySet="Cart">
-                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-                <ScalarProperty Name="AlbumID" ColumnName="AlbumID" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TransactioDetails">
             <EntityTypeMapping TypeName="DatabaseModel.TransactioDetail">
               <MappingFragment StoreEntitySet="TransactioDetail">
                 <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
                 <ScalarProperty Name="AlbumID" ColumnName="AlbumID" />
                 <ScalarProperty Name="Qty" ColumnName="Qty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionHeaders">
+            <EntityTypeMapping TypeName="DatabaseModel.TransactionHeader">
+              <MappingFragment StoreEntitySet="TransactionHeader">
+                <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -11,13 +11,14 @@ namespace KpopZstation.View.Partial
 {
     public partial class Navbar : System.Web.UI.MasterPage
     {
-        public Customer customer = AuthController.checkSession();
+        public Customer customer;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (customer == null) { 
+            customer = AuthController.checkSession();
 
-                Avatar.Visible = false;
+            if (customer == null) 
+            { 
                 HomeLink.Visible = true;
                 LoginLink.Visible = true;
                 RegisterLink.Visible = true;
@@ -27,19 +28,29 @@ namespace KpopZstation.View.Partial
                 HomeLink.Visible = true;
                 CartLink.Visible = true;
                 TransactionLink.Visible = true;
-                Avatar.Visible = true;
+                UpdateProfileLink.Visible = true;
+                Deletebtn.Visible = true;
+                logoutbtn.Visible = true;
             }
             else if (customer.CustomerRole.Equals("Admin"))
             {
                 HomeLink.Visible = true;
                 TransactionLink.Visible = true;
-                Avatar.Visible = true;
+                UpdateProfileLink.Visible = true;
+                UpdateProfileLink.Visible = true;
+                logoutbtn.Visible = true;
             }
         }
 
 
         protected void LogoutLink_Click(object sender, EventArgs e)
         {
+            AuthController.logout();
+        }
+
+        protected void delete_account(object sender, EventArgs e)
+        {
+            CustomerController.deleteCustomer(customer.CustomerID);
             AuthController.logout();
         }
     }

@@ -8,12 +8,14 @@ namespace KpopZstation.Factory
 {
     public class CartFactory
     {
-        public static Cart createCart(int CustomerID , int AlbumID , int Qunatity)
+        public static Cart createCart(int CustomerID, int AlbumID, int Quantity)
         {
-            Cart cart = new Cart();
-            cart.CustomerID = CustomerID;
-            cart.AlbumID = AlbumID; 
-            cart.Qty = Qunatity;
+            Cart cart = new Cart
+            {
+                CustomerID = CustomerID,
+                AlbumID = AlbumID,
+                Qty = Quantity
+            };
             return cart;
         }
 

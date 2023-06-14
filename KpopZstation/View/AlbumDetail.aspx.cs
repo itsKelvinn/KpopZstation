@@ -66,13 +66,24 @@ namespace KpopZstation.View
             }
             else
             {
-                errorQuantitylbl.Visible = false;
+                // errorQuantitylbl.Visible = false;
                 ChartBox.Style["border"] = "1px solid white";
                 ChartBox.Style["background"] = "white";
 
-                CartController.addCart(customer.CustomerID, album.AlbumID, quantity);
-                Response.Redirect("/View/ArtistDetail.aspx/?id=" + album.ArtistID);
+                int CusID = Convert.ToInt32(customer.CustomerID);
+                int AlbID = Convert.ToInt32(album.AlbumID);
 
+                Cart cart = CartController.checkCart(CusID, AlbID);
+
+                if (cart != null)
+                {
+                    CartController.updateCart(CusID, AlbID, quantity);
+                }
+                else
+                {
+                    CartController.addCart(CusID, AlbID, quantity);
+                    Response.Redirect("/View/ArtistDetail.aspx/?id=" + album.ArtistID);
+                }
             }
 
         }

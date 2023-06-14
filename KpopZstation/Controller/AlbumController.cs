@@ -29,5 +29,13 @@ namespace KpopZstation.Controller
             return UpdateAlbumHandler.handle(AlbumID, AlbumStock, AlbumPrice, AlbumName, AlbumDesc, AlbumImage);
         }
 
+        public static void purchaseAlbum(int AlbumID , int Quantity)
+        {
+            Album album = findAlbum(AlbumID);
+            int updatedAlbumStock = album.AlbumStock - Quantity;
+            updateAlbum(AlbumID,updatedAlbumStock, album.AlbumPrice, album.AlbumName,album.AlbumDescription, album.AlbumImage);
+        }
+
+
     }
 }

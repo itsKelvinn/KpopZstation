@@ -11,7 +11,7 @@ namespace KpopZstation.View
 {
 
 
-    public partial class Cart
+    public partial class CartPage
     {
 
         /// <summary>

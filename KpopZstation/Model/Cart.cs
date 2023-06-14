@@ -14,8 +14,8 @@ namespace KpopZstation.Model
     
     public partial class Cart
     {
-        public Nullable<int> CustomerID { get; set; }
-        public Nullable<int> AlbumID { get; set; }
+        public int CustomerID { get; set; }
+        public int AlbumID { get; set; }
         public int Qty { get; set; }
     
         public virtual Album Album { get; set; }

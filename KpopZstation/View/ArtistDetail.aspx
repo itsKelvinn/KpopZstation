@@ -40,7 +40,7 @@
                                     </p>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-center gap-3" style="width:800px;">
-                                    <a href="/View/AlbumDetail.aspx/?id=<%# Eval("AlbumID")%>" class="btn btn-dark fw-bold" style="height:50px; width: 200px;" visible="false" >Album Detail</a>
+                                    <a href="/View/AlbumDetail.aspx/?id=<%# Eval("AlbumID")%>" class="btn btn-dark fw-bold d-flex justify-content-center align-items-center" style="height:50px; width: 200px;" visible="false" >Album Detail</a>
                                     <asp:Button class="btn btn-warning fw-bold" CommandName="updateAlbum" OnCommand="Album_Update_btn" CommandArgument='<%# Eval("AlbumID") %>' UseSubmitBehavior="false" ID="updateBtn" runat="server" Text="Update" visible="false"/>
                                     <asp:Button class="btn btn-danger fw-bold" CommandName="deleteAlbum" OnCommand="Album_Delete_btn" CommandArgument='<%# Eval("AlbumID") %>' UseSubmitBehavior="false" ID="deleteBtn" runat="server" Text="Delete" visible="false"/>
                                 </div>

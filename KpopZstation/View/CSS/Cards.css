@@ -1,6 +1,12 @@
 ﻿.card {
     width: 341px;
     border: 1px solid black;
+    background: white;
+    transition: transform .2s ease;
+}
+
+.card:hover {
+    transform: scale(1.01);
 }
 
 #container{

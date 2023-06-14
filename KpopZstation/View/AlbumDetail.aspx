@@ -21,7 +21,7 @@
                 <asp:Label ID="quantityTextBox" runat="server" Text="0"></asp:Label>
                 <asp:Button ID="increaseButton" runat="server" Text="+" style="width:30px;" OnClick="IncreaseButton_Click" />
             </div>
-            <asp:Label class="text-danger" ID="errorQuantitylbl" runat="server" Text="Label"></asp:Label>
+            <asp:Label class="text-danger" ID="errorQuantitylbl" runat="server" Text="Label" Visible="false" ></asp:Label>
 
             <asp:Button class="btn btn-dark" ID="addchartBtn" OnClick="addChart" runat="server" Text="Add Chart" />
         </div>

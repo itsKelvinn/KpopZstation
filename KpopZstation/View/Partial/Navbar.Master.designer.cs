@@ -60,6 +60,15 @@ namespace KpopZstation.View.Partial
         protected global::System.Web.UI.WebControls.PlaceHolder CartLink;
 
         /// <summary>
+        /// TransactionReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder TransactionReport;
+
+        /// <summary>
         /// LoginLink control.
         /// </summary>
         /// <remarks>
@@ -78,22 +87,31 @@ namespace KpopZstation.View.Partial
         protected global::System.Web.UI.WebControls.PlaceHolder RegisterLink;
 
         /// <summary>
-        /// Avatar control.
+        /// UpdateProfileLink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder Avatar;
+        protected global::System.Web.UI.WebControls.PlaceHolder UpdateProfileLink;
 
         /// <summary>
-        /// logout control.
+        /// Deletebtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button logout;
+        protected global::System.Web.UI.WebControls.Button Deletebtn;
+
+        /// <summary>
+        /// logoutbtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button logoutbtn;
 
         /// <summary>
         /// ContentPlaceHolder1 control.

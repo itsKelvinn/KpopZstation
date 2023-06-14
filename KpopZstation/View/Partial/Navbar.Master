@@ -16,24 +16,29 @@
 
 
     <form id="form1" class="w-100" runat="server" style="max-width:1920px;">
+        
         <div class="w-100 border-bottom border-black d-flex align-items-center justify-content-between px-5" style="height: 60px; max-width: 1920px;">
             <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0">
                 <img src="/Asset/WebAsset/Logo.png" alt="KpopZtation" style="height: 40px;" />
             </a>
     
-            <div class="d-flex justify-content-center align-items-center gap-5" style="width:300px;">
-
+            <div class="d-flex justify-content-evenly align-items-center gap-5">
+     
                 <asp:PlaceHolder runat="server" ID="HomeLink" Visible="false">
                     <a href="/View/Home.aspx" class="fw-normal text-decoration-none text-dark">Home</a>
                 </asp:PlaceHolder>
                 
 
                 <asp:PlaceHolder runat="server" ID="TransactionLink" Visible="false">
-                    <a href="#" class="fw-normal text-decoration-none text-dark">Transaction</a>
+                    <a href="/View/TransactionHistory.aspx" class="fw-normal text-decoration-none text-dark">Transaction</a>
                 </asp:PlaceHolder>
 
                 <asp:PlaceHolder runat="server" ID="CartLink" Visible="false">
-                    <a href="/View/Cart.aspx" class="fw-normal text-decoration-none text-dark">Cart</a>
+                    <a href="/View/CartPage.aspx" class="fw-normal text-decoration-none text-dark">Cart</a>
+                </asp:PlaceHolder>
+
+                <asp:PlaceHolder runat="server" ID="TransactionReport" Visible="false">
+                    <a href="#" class="fw-normal text-decoration-none text-dark">Transaction Report</a>
                 </asp:PlaceHolder>
 
                 <asp:PlaceHolder runat="server" ID="LoginLink" Visible="false">
@@ -44,27 +49,16 @@
                     <a href="/View/Register.aspx" class="fw-normal text-decoration-none text-dark">Register</a>
                 </asp:PlaceHolder>
 
+                <asp:PlaceHolder ID="UpdateProfileLink" runat="server"  Visible="false">
+                    <a href="/View/UpdateProfile.aspx" class="fw-normal text-decoration-none text-dark">Update Profile</a>
+                </asp:PlaceHolder>
+
+                <asp:Button ID="Deletebtn" Visible="false" class="fw-normal border border-0 bg-white outline-none text-decoration-none text-dark m-0" runat="server" OnClick="delete_account" Text="Delete Account" />
+
+                <asp:Button ID="logoutbtn" Visible="false" class="fw-normal border border-0 bg-white outline-none text-decoration-none text-dark m-0" runat="server" OnClick="LogoutLink_Click" Text="Log out" />
+
             </div>
-            <asp:PlaceHolder runat="server" ID="Avatar" Visible="true">
-                <div id="Avatar" class="d-flex justify-content-center align-items-center" style="height:100%; width:40px">
-                    <img src="/Asset/WebAsset/Avatar.png" class="rounded-circle border border-black" style="height:40px; width:40px" alt="" />
-            
-                    <div id="Avatar-menu">
-
-                        <asp:PlaceHolder runat="server"  Visible="true">
-                            <a href="#" class="fw-normal text-decoration-none text-dark">Update Profile</a>
-                        </asp:PlaceHolder>
-              
-                        <hr class="my-2"/>
-
-
-
-                        <asp:Button ID="logout" class="fw-normal border border-none bg-white outline-none text-decoration-none text-dark m-0" runat="server" OnClick="LogoutLink_Click" Text="Log out" />
-                       
-
-                    </div>
-                </div>
-            </asp:PlaceHolder>
+           
         </div>
         
         

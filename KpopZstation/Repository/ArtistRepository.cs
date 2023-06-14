@@ -23,7 +23,18 @@ namespace KpopZstation.Repository
 
         public static List<Artist> getAll()
         {
-            return DB.Artists.ToList();
+            List<Artist> artists;
+
+            try
+            {
+                artists = DB.Artists.ToList();
+            }
+            catch
+            {
+                artists = null;
+            }
+
+            return artists;
         }
 
         public static Artist getArtist(int ArtistID)

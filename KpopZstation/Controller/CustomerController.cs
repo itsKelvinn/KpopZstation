@@ -18,5 +18,16 @@ namespace KpopZstation.Controller
         {
             AddCustomerHandler.handle(CustomerName, CustomerEmail, CustomerPassword, CustomerGender, CustomerAddress, CustomerRole);
         }
+
+        public static void updateCustomer(int CustomerID, string CustomerName, string CustomerEmail, string CustomerGender, string CustomerAddress, string CustomerPassword)
+        {
+            UpdateCustomerHandler.handle(CustomerID, CustomerName, CustomerEmail, CustomerGender, CustomerAddress, CustomerPassword);
+        }
+
+        public static void deleteCustomer(int CustomerID)
+        {
+            RemoveAccountHandler.handle(CustomerID);
+        }
+
     }
 }

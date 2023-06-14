@@ -27,5 +27,24 @@ namespace KpopZstation.Repository
             Customer customer = (from data in DB.Customers where data.CustomerEmail.Equals(email) && data.CustomerPassword.Equals(password) select data).FirstOrDefault();
             return customer;
         }
+
+        public static void update(int CustomerID,string CustomerName , string CustomerEmail , string CustomerGender , string CustomerAddress , string CustomerPassword)
+        {
+            Customer cus = DB.Customers.Find(CustomerID);
+            cus.CustomerName = CustomerName;
+            cus.CustomerEmail = CustomerEmail;
+            cus.CustomerGender = CustomerGender;    
+            cus.CustomerAddress = CustomerAddress;
+            cus.CustomerPassword = CustomerPassword;
+            DB.SaveChanges();   
+        }
+
+        public static void delete(int CustomerID)
+        {
+            Customer cus = DB.Customers.Find(CustomerID);
+            DB.Customers.Remove(cus);
+            DB.SaveChanges();
+        }
+
     }
 }

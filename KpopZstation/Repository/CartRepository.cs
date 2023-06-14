@@ -13,16 +13,15 @@ namespace KpopZstation.Validator
 
         public static bool addChart(Cart cart)
         {
-            try
-            {
                 DB.Carts.Add(cart);
                 DB.SaveChanges();
                 return true;
-            }
-            catch
-            {
-                return false;
-            }
+        }
+
+        public static Cart getCart(int CustomerID, int AlbumID)
+        {
+            Cart cart = DB.Carts.Find(CustomerID,AlbumID);
+            return cart;
         }
 
 
@@ -37,9 +36,10 @@ namespace KpopZstation.Validator
             return carts;
         }
 
-        public static bool deleteCart(Cart cart)
+        public static bool deleteCart(int CustomerID, int AlbumID)
         {
-            DB.Carts.Remove(cart); 
+            Cart cart = DB.Carts.Find(AlbumID,CustomerID);
+            DB.Carts.Remove(cart);
             DB.SaveChanges();
             return true;
         }
@@ -50,6 +50,20 @@ namespace KpopZstation.Validator
             DB.Carts.RemoveRange(cartsToRemove);
             DB.SaveChanges();
             return true;
+        }
+
+        public static bool updateCart(int CustomerID, int AlbumID , int Quantity)
+        {
+            Cart cart = getCart(CustomerID, AlbumID);
+
+            if(cart != null)
+            {
+                cart.Qty = cart.Qty + Quantity;
+                DB.SaveChanges();
+                return true;
+            }
+
+            return false;
         }
 
     }
